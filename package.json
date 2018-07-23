@@ -1,0 +1,27 @@
+{
+  "name": "@jahed/terraform",
+  "version": "0.11.7",
+  "description": "Manage Terraform executables via Yarn / NPM.",
+  "private": true,
+  "main": "src/terraform.js",
+  "bin": {
+    "terraform": "bin/terraform"
+  },
+  "scripts": {
+    "install": "node scripts/install.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jahed",
+  "license": "MIT",
+  "files": [
+    "bin",
+    "src",
+    "scripts"
+  ],
+  "dependencies": {
+    "mkdirp": "0.5.1",
+    "node-fetch": "2.2.0",
+    "rimraf": "2.6.2",
+    "yauzl": "2.10.0"
+  }
+}
