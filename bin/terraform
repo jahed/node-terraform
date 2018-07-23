@@ -3,11 +3,6 @@ const { spawn } = require('child_process')
 const { path: execPath } = require('../src/terraform')
 
 const args = process.argv.slice(2)
-const execProcess = spawn(execPath, args)
-execProcess.stdout.pipe(process.stdout)
-execProcess.stderr.pipe(process.stderr)
-
-process.on('SIGTERM', () => {
-  execProcess.kill('SIGTERM')
-  process.exit(1)
+spawn(execPath, args, {
+  stdio: [process.stdin, process.stdout, process.stderr]
 })
