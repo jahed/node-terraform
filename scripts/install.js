@@ -1,4 +1,3 @@
-const packageJson = require('../package.json')
 const fetch = require('node-fetch')
 const yauzl = require('yauzl')
 const path = require('path')
@@ -53,7 +52,7 @@ function getPlatform() {
 }
 
 function getVersion() {
-  return Promise.resolve(packageJson.version)
+  return Promise.resolve(outputs.version)
 }
 
 function getDownloadUrl({ version, platform, architecture }) {

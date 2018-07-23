@@ -1,5 +1,7 @@
 const path = require('path')
-const { version } = require('../package.json')
+const packageJson = require('../package.json')
+
+const version = packageJson.version.split('-')[0]
 
 function getFilenames() {
   if (process.platform === 'win32') {
