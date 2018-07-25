@@ -2,66 +2,71 @@ const fetch = require('node-fetch')
 const yauzl = require('yauzl')
 const path = require('path')
 const fs = require('fs')
+const {
+  not,
+  doNothing,
+  every,
+  resolveNullable,
+  resolved,
+  rejected,
+  eventually,
+  reason,
+  waterfall,
+  compose,
+  coalesce,
+  branch,
+  relay
+} = require('@jahed/promises')
 const outputs = require('../src/terraform')
 const makeDirectory = require('../src/makeDirectory')
 const removeDirectory = require('../src/removeDirectory')
 
-function resolveNullable(value, error = new Error(`value was ${value}`)) {
-  return typeof value === 'undefined' || value === null
-    ? Promise.reject(error)
-    : Promise.resolve(value)
-}
-
 function getArchitecture() {
-  const archs = {
-    'arm': 'arm',
-    'arm64': 'arm',
-    'ia32': null,
-    'mips': null,
-    'mipsel': null,
-    'ppc': null,
-    'ppc64': null,
-    's390': null,
-    's390x': null,
-    'x32': '386',
-    'x64': 'amd64'
-  }
-
   return resolveNullable(
-    archs[process.arch],
-    new Error(`"${process.arch}" architecture is not supported by terraform.`)
+    {
+      'arm': 'arm',
+      'arm64': 'arm',
+      'ia32': null,
+      'mips': null,
+      'mipsel': null,
+      'ppc': null,
+      'ppc64': null,
+      's390': null,
+      's390x': null,
+      'x32': '386',
+      'x64': 'amd64'
+    }[process.arch],
+    reason(`"${process.arch}" architecture is not supported by terraform.`)
   )
 }
 
 function getPlatform() {
-  const platforms = {
-    'aix': null,
-    'darwin': 'darwin',
-    'freebsd': 'freebsd',
-    'linux': 'linux',
-    'openbsd': 'openbsd',
-    'sunos': 'solaris',
-    'win32': 'windows',
-    'android': null
-  }
-
   return resolveNullable(
-    platforms[process.platform],
-    new Error(`"${process.platform}" platform is not supported by terraform.`)
+    {
+      'aix': null,
+      'darwin': 'darwin',
+      'freebsd': 'freebsd',
+      'linux': 'linux',
+      'openbsd': 'openbsd',
+      'sunos': 'solaris',
+      'win32': 'windows',
+      'android': null
+    }[process.platform],
+    reason(`"${process.platform}" platform is not supported by terraform.`)
   )
 }
 
-function getVersion() {
-  return Promise.resolve(outputs.version)
+function getVersion(outputs) {
+  return resolved(outputs.version)
 }
 
 function getDownloadUrl({ version, platform, architecture }) {
   return `https://releases.hashicorp.com/terraform/${version}/terraform_${version}_${platform}_${architecture}.zip`
 }
 
-function extractArchive({ buffer, outdir }) {
+function extractArchive({ outputs, buffer, outdir }) {
   console.log('extracting', { outdir })
-  return new Promise((resolve, reject) => {
+  return eventually((resolve, reject) => {
     yauzl.fromBuffer(buffer, { lazyEntries: true }, (err, archive) => {
       if (err) {
         reject(err)
@@ -72,7 +77,7 @@ function extractArchive({ buffer, outdir }) {
 
       archive.on('entry', entry => {
         if (entry.fileName !== outputs.originalFilename) {
-          reject(new Error(`expected zip to only contain a terraform executable. (${entry.fileName})`))
+          reject(reason(`expected zip to only contain a terraform executable. (${entry.fileName})`))
           return
         }
 
@@ -99,73 +104,86 @@ function extractArchive({ buffer, outdir }) {
   })
 }
 
-function downloadArchive({ url }) {
-  console.log('downloading', { url })
-  return fetch(url)
-    .then(res => {
-      if (res.ok) {
-        return res.buffer()
-      }
+const download = waterfall(
+  relay(
+    args => console.log('downloading', args)
+  ),
+  ({ url }) => fetch(url),
+  res => res.ok
+    ? res
+    : rejected(reason(`status was not okay (${res.status})`))
+)
 
-      return Promise.reject(new Error(`status was not okay (${res.status})`))
-    })
-}
+const downloadTerraformToMemory = waterfall(
+  outputs => every({
+    version: getVersion(outputs),
+    platform: getPlatform(),
+    architecture: getArchitecture()
+  }),
+  args => getDownloadUrl(args),
+  url => download({ url }),
+  res => res.buffer()
+)
 
-function downloadTerraform({ outdir }) {
-  return Promise
-    .all([
-      getVersion(),
-      getPlatform(),
-      getArchitecture()
-    ])
-    .then(([version, platform, architecture]) => getDownloadUrl({
-      version,
-      platform,
-      architecture
-    }))
-    .then(url => downloadArchive({ url }))
-    .then(buffer => extractArchive({ buffer, outdir }))
-}
 
-function fileExists({ file }) {
-  return new Promise((resolve, reject) => {
-    fs.access(file, err => {
-      if (err) {
-        reject(err)
-        return
-      }
+const downloadTerraformToFile = waterfall(
+  ({ outdir, outputs }) => every({
+    outputs,
+    outdir: coalesce(
+      () => resolveNullable(outdir),
+      () => path.resolve(process.cwd())
+    ),
+    buffer: downloadTerraformToMemory(outputs)
+  }),
+  args => extractArchive(args)
+)
 
-      resolve()
-    })
+const fileExists = file => eventually((resolve, reject) => {
+  fs.access(file, err => {
+    if (err) {
+      console.log('file does not exist', { file })
+      reject(err)
+      return
+    }
+
+    console.log('file already exists', { file })
+    resolve()
   })
-}
+})
 
-function not(promise) {
-  return promise.then(
-    value => Promise.reject(new Error(`expected rejection but got ${value}`)),
-    error => Promise.resolve(error)
+const setupOutputDirectory = waterfall(
+  outputs => path.dirname(outputs.path),
+  relay(
+    outdir => removeDirectory(outdir),
+    outdir => makeDirectory(outdir)
   )
-}
+)
 
-function doNothing() {
-  return () => {}
-}
-
-not(fileExists({ file: outputs.path }))
-  .then(
-    () => {
-      const outdir = path.resolve(__dirname, '../downloads/')
-
-      return removeDirectory(outdir)
-        .then(() => makeDirectory(outdir))
-        .then(() => downloadTerraform({ outdir }))
-        .then(filePath => {
+const install = compose(
+  relay(
+    outputs => not(fileExists(outputs.path))
+  ),
+  branch(
+    compose(
+      waterfall(
+        outputs => every({
+          outputs,
+          outdir: setupOutputDirectory(outputs)
+        }),
+        args => downloadTerraformToFile(args)
+      ),
+      branch(
+        filePath => {
           console.log('downloaded terraform', { path: filePath })
-        })
-    },
+        },
+        error => {
+          console.error('failed to download terraform.', error)
+          process.exit(1)
+        }
+      )
+    ),
     doNothing()
   )
-  .catch(error => {
-    console.error('failed to download terraform.', error)
-    process.exit(1)
-  })
+)
+
+install(outputs)
