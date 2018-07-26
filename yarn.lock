@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@jahed/promises@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@jahed/promises/-/promises-0.0.1.tgz#ba399a1a221d7eaae002485f0ad622c6386182b7"
+"@jahed/promises@0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@jahed/promises/-/promises-0.0.4.tgz#4f9bd20988bc2e97cadd3955c5e6023d01c22cc8"
 
 balanced-match@^1.0.0:
   version "1.0.0"
