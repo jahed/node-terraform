@@ -7,6 +7,9 @@
 A wrapper which downloads and runs [Terraform](https://www.terraform.io/) 
 locally via [Yarn](https://yarnpkg.com/en/) or [NPM](https://www.npmjs.com/).
 
+Use this package to decouple your project's Terraform version from your global 
+environment.
+
 ## Installation
 
 Install the right version for your project.
