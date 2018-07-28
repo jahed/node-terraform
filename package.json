@@ -4,7 +4,7 @@
   "description": "Manage Terraform executables via Yarn / NPM.",
   "main": "src/terraform.js",
   "bin": {
-    "terraform": "bin/terraform"
+    "terraform": "bin/terraform.js"
   },
   "scripts": {
     "install": "node scripts/install.js",
