@@ -46,3 +46,18 @@ yarn terraform --help
 ```bash
 npx terraform --help
 ```
+
+## FAQ & Troubleshooting
+
+#### Terraform version isn't available
+
+Submit an issue ticket and a maintainer will publish a new version.
+
+#### The Terraform executable is corrupt
+
+Remove the package and reinstall it. If that doesn't work, submit an issue
+ticket.
+
+## License
+
+See `LICENSE` file.
