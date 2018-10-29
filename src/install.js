@@ -9,6 +9,7 @@ const {
 } = require('@jahed/promises')
 const downloadTerraformToFile = require('./downloadTerraformToFile')
 const fileExists = require('./fileExists')
+const makeExecutable = require('./makeExecutable')
 const setupOutputDirectory = require('./setupOutputDirectory')
 
 const exit = () => branch(
@@ -26,7 +27,10 @@ const downloadTerraformToDirectory = () => waterfall(
     outputs,
     outdir: setupOutputDirectory(outputs)
   }),
-  args => downloadTerraformToFile(args)
+  args => downloadTerraformToFile(args),
+  relay(
+    filePath => makeExecutable(filePath)
+  )
 )
 
 const doInstall = () => compose(
