@@ -8,7 +8,8 @@
   },
   "scripts": {
     "install": "node scripts/install.js",
-    "test": "yarn install && rimraf downloads && yarn install"
+    "test": "yarn install && rimraf downloads && yarn install",
+    "postpublish": "git push --follow-tags"
   },
   "author": "Jahed",
   "license": "MIT",
