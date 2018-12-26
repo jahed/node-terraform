@@ -19,7 +19,7 @@
     "scripts"
   ],
   "dependencies": {
-    "@jahed/promises": "0.0.4",
+    "@jahed/promises": "0.1.3",
     "mkdirp": "0.5.1",
     "node-fetch": "2.2.0",
     "rimraf": "2.6.2",
