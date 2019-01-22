@@ -11,6 +11,14 @@
     "test": "yarn install && rimraf downloads && yarn install",
     "deploy": "yarn test && yarn publish && git push --follow-tags"
   },
+  "keywords": [
+    "terraform",
+    "hashicorp",
+    "infrastructure",
+    "automation",
+    "executable",
+    "wrapper"
+  ],
   "author": "Jahed",
   "license": "MIT",
   "files": [
