@@ -2,10 +2,18 @@
   "name": "@jahed/terraform",
   "version": "0.11.10",
   "description": "Manage Terraform executables via Yarn / NPM.",
+  "author": "Jahed",
+  "license": "MIT",
+  "repository": "https://github.com/jahed/node-terraform",
   "main": "src/terraform.js",
   "bin": {
     "terraform": "bin/terraform.js"
   },
+  "files": [
+    "bin",
+    "src",
+    "scripts"
+  ],
   "scripts": {
     "install": "node scripts/install.js",
     "test": "yarn install && rimraf downloads && yarn install",
@@ -18,13 +26,6 @@
     "automation",
     "executable",
     "wrapper"
-  ],
-  "author": "Jahed",
-  "license": "MIT",
-  "files": [
-    "bin",
-    "src",
-    "scripts"
   ],
   "dependencies": {
     "@jahed/promises": "0.0.4",
