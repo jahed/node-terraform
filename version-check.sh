@@ -23,6 +23,7 @@ for version in $NEXT_PATCH $NEXT_MINOR $NEXT_MAJOR; do
 
   if [[ "${RESULT}" == "0" ]]; then
     echo "Terraform v${version} succeeded"
+    git remote set-url --push origin "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}"
     git push --follow-tags
     exit 0
   fi
