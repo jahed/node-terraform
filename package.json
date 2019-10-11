@@ -30,10 +30,10 @@
     "wrapper"
   ],
   "dependencies": {
-    "@jahed/promises": "1.0.1",
-    "mkdirp": "0.5.1",
-    "node-fetch": "2.6.0",
-    "rimraf": "3.0.0",
-    "yauzl": "2.10.0"
+    "@jahed/promises": "^1.0.1",
+    "mkdirp": "^0.5.1",
+    "node-fetch": "^2.6.0",
+    "rimraf": "^3.0.0",
+    "yauzl": "^2.10.0"
   }
 }
