@@ -1,0 +1,17 @@
+name: Dependency Check
+
+on:
+  schedule:
+  - cron: 0 13 * * 1
+jobs:
+  version-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - run: yarn install --frozen-lockfile
+      - run: yarn dependency-check
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
