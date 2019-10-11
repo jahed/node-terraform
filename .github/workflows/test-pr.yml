@@ -1,9 +1,6 @@
-name: Run Tests
+name: Run Tests for Pull Request
 
 on:
-  push:
-    branches:
-      - master
   pull_request:
     branches:
       - master
