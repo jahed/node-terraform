@@ -1,0 +1,31 @@
+name: Publish Package
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - v*
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - run: yarn install --frozen-lockfile
+      - run: yarn test
+
+  publish:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+          registry-url: https://registry.npmjs.org/
+      - run: yarn publish --non-interactive
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
