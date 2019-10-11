@@ -35,4 +35,4 @@ for version in $NEXT_PATCH $NEXT_MINOR $NEXT_MAJOR; do
 done
 
 echo "No new Terraform releases found."
-exit 1
+exit 0
