@@ -1,6 +1,5 @@
 # @jahed/terraform
 
-[![Travis](https://img.shields.io/travis/jahed/node-terraform.svg)](https://travis-ci.org/jahed/node-terraform)
 [![npm](https://img.shields.io/npm/v/@jahed/terraform.svg)](https://www.npmjs.com/package/@jahed/terraform)
 [![Patreon](https://img.shields.io/badge/patreon-donate-f96854.svg)](https://www.patreon.com/jahed)
 [![Liberapay](https://img.shields.io/badge/liberapay-donate-d9b113.svg)](https://liberapay.com/jahed)
