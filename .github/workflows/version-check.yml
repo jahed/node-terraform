@@ -1,0 +1,17 @@
+name: Version Check
+
+on:
+  schedule:
+  - cron: 0 14 * * 1-5
+jobs:
+  version-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - run: yarn install --frozen-lockfile
+      - run: yarn version-check
+        env:
+          GITHUB_TOKEN: ${{secrets.github_token}}
