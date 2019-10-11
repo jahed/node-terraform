@@ -14,4 +14,4 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn version-check
         env:
-          GITHUB_TOKEN: ${{secrets.github_token}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
