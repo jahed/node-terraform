@@ -11,9 +11,11 @@ NEXT_PATCH="${MAJOR}.${MINOR}.$((PATCH+1))"
 NEXT_MINOR="${MAJOR}.$((MINOR+1)).${PATCH}"
 NEXT_MAJOR="$((MAJOR+1)).${MINOR}.${PATCH}"
 
+git config user.email "jahed.public+ci@gmail.com"
+git config user.name "${GITHUB_ACTOR}"
+
 for version in $NEXT_PATCH $NEXT_MINOR $NEXT_MAJOR; do
   echo "Attempting Terraform v${version}"
-
   yarn version --new-version "${version}"
 
   set +e
