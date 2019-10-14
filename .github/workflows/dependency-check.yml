@@ -5,7 +5,9 @@ on:
   - cron: 0 13 * * 1
   push:
     branches: master
-    paths: 'dependency-check.sh'
+    paths:
+    - 'dependency-check.sh'
+    - '.github/workflows/dependency-check.yml'
 jobs:
   dependency-check:
     runs-on: ubuntu-latest
