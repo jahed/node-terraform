@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
+git config user.email "jahed.public+ci@gmail.com"
+git config user.name "${GITHUB_ACTOR}"
+
 yarn upgrade --latest
 git add yarn.lock '*package.json'
 
