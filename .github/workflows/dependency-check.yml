@@ -3,6 +3,9 @@ name: Dependency Check
 on:
   schedule:
   - cron: 0 13 * * 1
+  push:
+    branches: master
+    paths: 'dependency-check.sh'
 jobs:
   dependency-check:
     runs-on: ubuntu-latest
