@@ -11,6 +11,7 @@ NEXT_PATCH="${MAJOR}.${MINOR}.$((PATCH+1))"
 NEXT_MINOR="${MAJOR}.$((MINOR+1)).${PATCH}"
 NEXT_MAJOR="$((MAJOR+1)).${MINOR}.${PATCH}"
 
+git checkout master
 git config user.email "jahed.public+ci@gmail.com"
 git config user.name "${GITHUB_ACTOR}"
 
