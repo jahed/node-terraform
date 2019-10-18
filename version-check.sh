@@ -11,7 +11,6 @@ NEXT_PATCH="${MAJOR}.${MINOR}.$((PATCH+1))"
 NEXT_MINOR="${MAJOR}.$((MINOR+1)).${PATCH}"
 NEXT_MAJOR="$((MAJOR+1)).${MINOR}.${PATCH}"
 
-git checkout master
 git config user.email "jahed.public+ci@gmail.com"
 git config user.name "${GITHUB_ACTOR}"
 
@@ -27,7 +26,7 @@ for version in $NEXT_PATCH $NEXT_MINOR $NEXT_MAJOR; do
   if [[ "${RESULT}" == "0" ]]; then
     echo "Terraform v${version} succeeded"
     git remote set-url --push origin "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}"
-    git push --follow-tags
+    git push --follow-tags origin master
     exit 0
   fi
 
