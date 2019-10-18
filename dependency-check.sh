@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-git checkout master
 git config user.email "jahed.public+ci@gmail.com"
 git config user.name "${GITHUB_ACTOR}"
 
@@ -21,4 +20,4 @@ fi
 yarn test
 
 git remote set-url --push origin "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}"
-git push
+git push origin HEAD:master
