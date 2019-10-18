@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
+git checkout master
 git config user.email "jahed.public+ci@gmail.com"
 git config user.name "${GITHUB_ACTOR}"
 
