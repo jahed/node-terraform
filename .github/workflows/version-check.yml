@@ -2,20 +2,23 @@ name: Version Check
 
 on:
   schedule:
-  - cron: 0 14 * * 1-5
+    - cron: 0 14 * * 1-5
   push:
     branches: master
     paths:
-    - 'version-check.sh'
-    - '.github/workflows/version-check.yml'
+      - 'version-check.sh'
+      - '.github/workflows/version-check.yml'
 jobs:
   version-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/cache@v1
         with:
-          node-version: 12
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
       - run: yarn install --frozen-lockfile
       - run: yarn version-check
         env:
