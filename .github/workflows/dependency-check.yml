@@ -2,24 +2,24 @@ name: Dependency Check
 
 on:
   schedule:
-  - cron: 0 13 * * 1
+    - cron: 0 13 * * 1
   push:
     branches: master
     paths:
-    - 'dependency-check.sh'
-    - '.github/workflows/dependency-check.yml'
+      - 'dependency-check.sh'
+      - '.github/workflows/dependency-check.yml'
 jobs:
   dependency-check:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/cache@v1
-      with:
-        path: ~/.cache/yarn
-        key: ${{ runner.os }}-yarn-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
-    - run: yarn install --frozen-lockfile
-    - run: yarn dependency-check
-      env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - uses: actions/checkout@v1
+      - uses: actions/cache@v1
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - run: yarn install --frozen-lockfile
+      - run: yarn dependency-check
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
