@@ -1,5 +1,3 @@
-name: Dependency Check
-
 on:
   schedule:
     - cron: 0 13 * * 1
