@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@jahed/promises@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@jahed/promises/-/promises-1.0.1.tgz#65eb8f7a91d46a60ff49f6e902e3870d20be200a"
-  integrity sha512-mc5SCNfxxbS0/wBtJliqza1OKasQ9xoAY2t2NjeiesmX1q7ICS1tx1MRBkzLecAoHNUsd5IbQhiKfldvIfRr7g==
+"@jahed/promises@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@jahed/promises/-/promises-1.0.2.tgz#6643eced3333c9cea7a31c0a02cf3aa8a3734256"
+  integrity sha512-Ak1PYoJ+nq9SoJ6fGCqCpwfB1/OpMadCuo1WhaNwkZ7EKXNzq1Kj60/KeZGkm1fkzZIOMPkAcKO0EeTxm/89uQ==
 
 balanced-match@^1.0.0:
   version "1.0.0"
