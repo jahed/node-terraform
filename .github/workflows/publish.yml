@@ -21,4 +21,4 @@ jobs:
       - run: yarn test
       - run: yarn publish --non-interactive
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NPM_AUTH_TOKEN: ${{secrets.npm_token}}
