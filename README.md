@@ -10,6 +10,11 @@ locally via [Yarn](https://yarnpkg.com/en/) or [NPM](https://www.npmjs.com/).
 Use this package to decouple your project's Terraform version from your global 
 environment.
 
+## Useful Links
+
+- [Terraform CHANGELOG](https://github.com/hashicorp/terraform/blob/master/CHANGELOG.md)
+- [Terraform Releases](https://releases.hashicorp.com/terraform/)
+
 ## Installation
 
 Install the right version for your project.
@@ -21,7 +26,7 @@ Install the right version for your project.
 yarn add @jahed/terraform
 
 # Specific version
-yarn add @jahed/terraform@0.11.7
+yarn add @jahed/terraform@0.12.23
 ```
 
 ### NPM
@@ -31,7 +36,7 @@ yarn add @jahed/terraform@0.11.7
 npm install @jahed/terraform
 
 # Specific version
-npm install @jahed/terraform@0.11.7
+npm install @jahed/terraform@0.12.23
 ```
 
 ## Usage
