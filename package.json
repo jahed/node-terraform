@@ -30,6 +30,24 @@
     "executable",
     "wrapper"
   ],
+  "funding": [
+    {
+      "type" : "Website",
+      "url" : "https://jahed.dev/donate"
+    },
+    {
+      "type" : "Patreon",
+      "url" : "https://patreon.com/jahed"
+    },
+    {
+      "type" : "PayPal",
+      "url" : "https://paypal.me/jahed/5"
+    },
+    {
+      "type" : "Liberapay",
+      "url" : "https://liberapay.com/jahed"
+    }
+  ],
   "dependencies": {
     "@jahed/promises": "^1.0.2",
     "mkdirp": "^1.0.4",
