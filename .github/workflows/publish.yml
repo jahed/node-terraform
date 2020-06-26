@@ -1,7 +1,11 @@
 on:
-  push:
-    tags:
-      - 'v[0-9]*'
+  # 'push' does not seem to trigger when push is done by an action. So use
+  # 'release' trigger instead.
+  release:
+    types: [published]
+  # push:
+  #   tags:
+  #     - 'v[0-9]*'
 jobs:
   publish:
     runs-on: ubuntu-latest
