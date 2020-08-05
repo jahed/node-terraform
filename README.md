@@ -29,6 +29,25 @@ npm install @jahed/terraform
 npm install @jahed/terraform@0.12.29
 ```
 
+> Note: If you use [`required_version`](https://www.terraform.io/docs/configuration/terraform.html#specifying-a-required-terraform-version)
+> in your Terraform configuration, make sure it matches the version in your `package.json`.
+> In the future, [this may be automated for you](https://github.com/jahed/node-terraform/issues/9).
+
+## Configuration
+
+To fully automate your Terraform installation including plugins, you can add the
+following to your `package.json`.
+
+```json
+{
+  "scripts": {
+    "postinstall": "terraform init && terraform get"
+  }
+}
+```
+
+Now every time you run `npm install` it will also setup and update Terraform.
+
 ## Usage
 
 You can run any `terraform` command by prefixing it with `npx`.
