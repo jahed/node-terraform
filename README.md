@@ -7,8 +7,10 @@
 A wrapper which downloads and runs [Terraform](https://www.terraform.io/) 
 locally via [Yarn](https://yarnpkg.com/en/) or [NPM](https://www.npmjs.com/).
 
-Use this package to decouple your project's Terraform version from your global 
-environment.
+- Automates and manages your Terraform setup like all your other NPM/Yarn dependencies.
+- Downloads the correct version of Terraform regardless of which Operating System you're using.
+- Decouples your project's Terraform version from your system installation.
+- New releases are semi-automated to stay in sync with official Terraform releases.
 
 ## Useful Links
 
@@ -19,37 +21,17 @@ environment.
 
 Install the right version for your project.
 
-### Yarn
-
-```bash
-# Latest
-yarn add @jahed/terraform
-
-# Specific version
-yarn add @jahed/terraform@0.12.23
-```
-
-### NPM
-
 ```bash
 # Latest
 npm install @jahed/terraform
 
 # Specific version
-npm install @jahed/terraform@0.12.23
+npm install @jahed/terraform@0.12.29
 ```
 
 ## Usage
 
-You can run any `terraform` command by prefixing it with your package manager.
-
-### Yarn
-
-```bash
-yarn terraform --help
-```
-
-### NPM
+You can run any `terraform` command by prefixing it with `npx`.
 
 ```bash
 npx terraform --help
@@ -60,11 +42,11 @@ npx terraform --help
 #### How is this package versioned?
 
 For consistency, the version of every release matches the version of Terraform.
-There are some downsides to this. If we improve the package and add more
-features, we can't bump the package version using Semantic Version (SemVer) like
+There are some downsides to this. If I improve the package and add more
+features, I can't bump the package version using Semantic Version (SemVer) like
 most packages.
 
-For now, we're using pre-release versions as a workaround. For example
+For now, I'm using pre-release versions as a workaround. For example
 `v0.11.7-1.0.0` is for Terraform `0.11.7` and package's `1.0.0` release.
 So if you want the latest version, use the latest pre-release, which is versioned using SemVer.
 
@@ -80,13 +62,13 @@ child process, forwarding arguments, stdin, stdout, etc.
 
 #### The `terraform` version isn't available
 
-Submit an issue ticket and a maintainer will publish a new version.
+Submit an issue ticket and I'll publish a new version.
 
 #### The `terraform` executable is corrupt
 
 Remove the package and reinstall it. If that doesn't work, submit an issue
-ticket.
+ticket and I'll look into it.
 
 ## License
 
-See `LICENSE` file.
+[MIT](./LICENSE).
