@@ -10,6 +10,7 @@ locally via [Yarn](https://yarnpkg.com/en/) or [NPM](https://www.npmjs.com/).
 
 - Automates and manages your Terraform setup like all your other NPM/Yarn dependencies.
 - Downloads the correct version of Terraform regardless of which Operating System you're using.
+- Checks downloads against Hashicorp's signed checksums to avoid malicious executables.
 - Decouples your project's Terraform version from your system installation.
 - New releases are semi-automated to stay in sync with official Terraform releases.
 
