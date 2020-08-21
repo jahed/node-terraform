@@ -1,5 +1,7 @@
-function getDownloadUrl({ version, platform, architecture }) {
-  return `https://releases.hashicorp.com/terraform/${version}/terraform_${version}_${platform}_${architecture}.zip`
+const getDownloadFilename = require('./getDownloadFilename')
+
+function getDownloadUrl(args) {
+  return `https://releases.hashicorp.com/terraform/${args.version}/${getDownloadFilename(args)}`
 }
 
 module.exports = getDownloadUrl

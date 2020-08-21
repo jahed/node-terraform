@@ -12,10 +12,12 @@
   "files": [
     "bin",
     "src",
-    "scripts"
+    "scripts",
+    "hashes.txt"
   ],
   "scripts": {
     "install": "node scripts/install.js",
+    "preversion": "./preversion.sh",
     "test": "./test.sh",
     "version-check": "./version-check.sh",
     "dependency-check": "./dependency-check.sh",
