@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-VERSION_PARTS=($(cat package.json | jq -r '.version' | tr '.' '\n'))
+VERSION_PARTS=($(cat package.json | jq -r '.version' | cut -d'-' -f1 | tr '.' '\n'))
 
 MAJOR=${VERSION_PARTS[0]}
 MINOR=${VERSION_PARTS[1]}
