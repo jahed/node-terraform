@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "install": "node scripts/install.js",
-    "preversion": "./preversion.sh",
+    "version": "./version.sh",
     "test": "./test.sh",
     "version-check": "./version-check.sh",
     "dependency-check": "./dependency-check.sh",

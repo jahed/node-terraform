@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# version: Run AFTER bumping the package version, but BEFORE commit.
+# https://docs.npmjs.com/misc/scripts
 set -eo pipefail
 
 gpg --import hashicorp.asc || true
