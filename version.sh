@@ -3,6 +3,8 @@
 # https://docs.npmjs.com/misc/scripts
 set -eo pipefail
 
+echo "Updating hashes.txt."
+
 gpg --import hashicorp.asc || true
 
 VERSION=$(git describe | cut -d'-' -f1 | cut -d'v' -f2)
@@ -11,4 +13,5 @@ curl -s "https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION
   | gpg --verify - hashes.txt
 
 git add hashes.txt
-echo "Updated hashes.txt."
+
+echo "Done."
