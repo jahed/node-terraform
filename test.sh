@@ -5,12 +5,12 @@ function get_version_line {
   ./bin/terraform.js --version | fgrep 'Terraform v' | head -n1
 }
 
-EXPECTED_VERSION=$(git describe | cut -d'-' -f1)
+EXPECTED_VERSION=$(cat package.json | jq -r '.version' | cut -d'-' -f1)
 
 echo "TEST: Executes existing Terraform"
 yarn install --frozen-lockfile
 RESULT=$(get_version_line)
-if [[ "${RESULT}" != "Terraform ${EXPECTED_VERSION}" ]]; then
+if [[ "${RESULT}" != "Terraform v${EXPECTED_VERSION}" ]]; then
   echo "Test failed."
   exit 1
 fi
@@ -31,7 +31,7 @@ echo "TEST: Reinstalls Terraform with correct version"
 rm -rf downloads
 yarn install --frozen-lockfile
 RESULT=$(get_version_line)
-if [[ "${RESULT}" != "Terraform ${EXPECTED_VERSION}" ]]; then
+if [[ "${RESULT}" != "Terraform v${EXPECTED_VERSION}" ]]; then
   echo "Test failed."
   exit 1
 fi
