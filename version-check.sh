@@ -16,10 +16,9 @@ git config user.name "${GITHUB_ACTOR}"
 
 for version in $NEXT_PATCH $NEXT_MINOR $NEXT_MAJOR; do
   echo "Attempting Terraform v${version}"
-  yarn version --new-version "${version}"
 
   set +e
-  yarn test
+  yarn version --new-version "${version}"
   RESULT=$?
   set -e
 

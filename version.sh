@@ -13,6 +13,8 @@ curl -s "https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION
 curl -s "https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_SHA256SUMS.sig" \
   | gpg --verify - hashes.txt
 
+yarn test
+
 git add hashes.txt
 
 echo "Done."
