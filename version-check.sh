@@ -30,9 +30,8 @@ for version in $NEXT_PATCH $NEXT_MINOR $NEXT_MAJOR; do
   fi
 
   echo "Terraform v${version} failed"
-  git tag --delete "v${version}"
-  git reset HEAD~1
-  git checkout .
+  git tag --delete "v${version}" || true
+  git reset --hard "${GITHUB_SHA}"
 done
 
 echo "No new Terraform releases found."
