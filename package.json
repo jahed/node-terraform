@@ -53,7 +53,7 @@
   "dependencies": {
     "@jahed/promises": "^1.0.2",
     "mkdirp": "^1.0.4",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "rimraf": "^3.0.2",
     "yauzl": "^2.10.0"
   }
