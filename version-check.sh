@@ -3,12 +3,7 @@ set -eo pipefail
 
 if [[ "${CI}" == "true" ]]; then
   git config user.email "jahed.public+ci@gmail.com"
-
-  if [[ ! -z "${GITHUB_ACTOR}" ]]; then
-    git config user.name "${GITHUB_ACTOR}"
-    git remote set-url --push origin "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}"
-    git branch -u origin HEAD:master
-  fi
+  git config user.name "${GITHUB_ACTOR}"
 fi
 
 START_SHA="$(git rev-parse HEAD)"

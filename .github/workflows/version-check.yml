@@ -10,7 +10,7 @@ jobs:
   version-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: actions/cache@v2
         with:
           path: ~/.cache/yarn
@@ -19,5 +19,3 @@ jobs:
             ${{ runner.os }}-yarn-
       - run: yarn install --frozen-lockfile --prefer-offline
       - run: yarn version-check
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
