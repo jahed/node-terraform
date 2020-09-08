@@ -1,4 +1,5 @@
 const path = require('path')
+const findCacheDir = require('find-cache-dir')
 const packageJson = require('../package.json')
 
 const version = packageJson.version.split('-')[0]
@@ -17,9 +18,9 @@ function getFilenames() {
   }
 }
 
+const cacheDir = findCacheDir({ name: packageJson.name });
 const { originalFilename, versionedFilename } = getFilenames()
-
-const execPath = path.join(__dirname, '../downloads', versionedFilename)
+const execPath = path.resolve(cacheDir, versionedFilename)
 
 module.exports = {
   version,

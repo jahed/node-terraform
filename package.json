@@ -52,6 +52,7 @@
   ],
   "dependencies": {
     "@jahed/promises": "^1.0.2",
+    "find-cache-dir": "^3.3.1",
     "mkdirp": "^1.0.4",
     "node-fetch": "^2.6.1",
     "rimraf": "^3.0.2",

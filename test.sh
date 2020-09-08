@@ -28,7 +28,7 @@ fi
 echo
 
 echo "TEST: Reinstalls Terraform with correct version"
-rm -rf downloads
+rm -r ./node_modules/.cache/@jahed/terraform
 yarn install --frozen-lockfile
 RESULT=$(get_version_line)
 if [[ "${RESULT}" != "Terraform v${EXPECTED_VERSION}" ]]; then
