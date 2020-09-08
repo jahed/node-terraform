@@ -19,7 +19,7 @@ set -e
 echo
 
 if [[ "${RESULT}" != "0" ]]; then
-  echo <<EOF
+  cat <<EOF
 RESULT:
   No dependencies upgraded.
 
@@ -36,7 +36,7 @@ echo "PUSHING CHANGES"
 git push
 echo
 
-echo <<EOF
+cat <<EOF
 RESULT:
   Dependencies upgrades.
 

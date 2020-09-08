@@ -31,7 +31,7 @@ for version in $NEXT_PATCH $NEXT_MINOR $NEXT_MAJOR; do
     git push --follow-tags
     echo
 
-    echo <<EOF
+    cat <<EOF
 RESULT:
   New Version: ${version}
 
@@ -46,7 +46,7 @@ EOF
   echo
 done
 
-    echo <<EOF
+cat <<EOF
 RESULT:
   No new Terraform releases found.
 
