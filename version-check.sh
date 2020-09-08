@@ -7,7 +7,7 @@ if [[ "${CI}" == "true" ]]; then
   if [[ ! -z "${GITHUB_ACTOR}" ]]; then
     git config user.name "${GITHUB_ACTOR}"
     git remote set-url --push origin "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}"
-    git branch -u origin/master
+    git branch -u origin HEAD:master
   fi
 fi
 
