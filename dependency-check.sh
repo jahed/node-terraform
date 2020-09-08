@@ -1,8 +1,15 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-git config user.email "jahed.public+ci@gmail.com"
-git config user.name "${GITHUB_ACTOR}"
+if [[ "${CI}" == "true" ]]; then
+  git config user.email "jahed.public+ci@gmail.com"
+
+  if [[ ! -z "${GITHUB_ACTOR}" ]]; then
+    git config user.name "${GITHUB_ACTOR}"
+    git remote set-url --push origin "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}"
+    git branch -u origin/master
+  fi
+fi
 
 yarn upgrade --latest
 git add yarn.lock '*package.json'
@@ -18,6 +25,4 @@ if [[ "${RESULT}" != "0" ]]; then
 fi
 
 yarn test
-
-git remote set-url --push origin "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}"
-git push origin HEAD:master
+git push
