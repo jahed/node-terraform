@@ -18,22 +18,37 @@ NEXT_MINOR="${MAJOR}.$((MINOR+1)).0"
 NEXT_MAJOR="$((MAJOR+1)).0.0"
 
 for version in $NEXT_PATCH $NEXT_MINOR $NEXT_MAJOR; do
-  echo "Attempting Terraform v${version}"
-
+  echo "ATTEMPTING VERSION BUMP"
+  echo "  New Version: v${version}"
   set +e
   yarn version --new-version "${version}"
   RESULT=$?
   set -e
+  echo
 
   if [[ "${RESULT}" == "0" ]]; then
-    echo "Terraform v${version} succeeded"
+    echo "PUSHING CHANGES"
     git push --follow-tags
+    echo
+
+    echo <<EOF
+RESULT:
+  New Version: ${version}
+
+Done.
+EOF
     exit 0
   fi
 
-  echo "Terraform v${version} failed"
+  echo "REVERTING CHANGES"
   git tag --delete "v${version}" || true
   git reset --hard "${START_SHA}"
+  echo
 done
 
-echo "No new Terraform releases found."
+    echo <<EOF
+RESULT:
+  No new Terraform releases found.
+
+Done.
+EOF
