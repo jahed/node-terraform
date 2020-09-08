@@ -14,10 +14,10 @@ const setupOutputDirectory = require('./setupOutputDirectory')
 
 const exit = () => branch(
   filePath => {
-    console.log('downloaded terraform', { path: filePath })
+    console.log('installed terraform', { path: filePath })
   },
   error => {
-    console.error('failed to download terraform.', error)
+    console.error('failed to install terraform.', error)
     process.exit(1)
   }
 )
