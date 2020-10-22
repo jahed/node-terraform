@@ -1,6 +1,6 @@
 {
   "name": "@jahed/terraform",
-  "version": "0.13.4",
+  "version": "0.13.5",
   "description": "Manage Terraform executables via Yarn / NPM.",
   "author": "Jahed",
   "license": "MIT",
