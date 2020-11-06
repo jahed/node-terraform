@@ -18,7 +18,11 @@ function getFilenames() {
   }
 }
 
-const cacheDir = findCacheDir({ name: packageJson.name });
+const cacheDir = findCacheDir({
+  name: packageJson.name,
+  cwd: process.env.INIT_CWD
+});
+
 const { originalFilename, versionedFilename } = getFilenames()
 const execPath = path.resolve(cacheDir, versionedFilename)
 
