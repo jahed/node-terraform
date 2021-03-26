@@ -10,6 +10,10 @@ echo "UPGRADING DEPENDENCIES"
 yarn upgrade --latest
 echo
 
+echo "AUDITING DEPENDENCIES"
+yarn audit
+echo
+
 echo "COMMITTING CHANGES"
 git add yarn.lock '*package.json'
 set +e
