@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          token: ${{ secrets.gh_token }} # needed to trigger publish on push
+          token: ${{ secrets.GH_TOKEN }} # needed to trigger publish on push
       - uses: actions/cache@v2
         with:
           path: ~/.cache/yarn
