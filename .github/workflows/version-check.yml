@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ssh-key: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
       - uses: actions/cache@v2
         with:
           path: ~/.cache/yarn
