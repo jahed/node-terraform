@@ -1,6 +1,7 @@
 # @jahed/terraform
 
 [![npm](https://img.shields.io/npm/v/@jahed/terraform.svg)](https://www.npmjs.com/package/@jahed/terraform)
+[![author](https://img.shields.io/badge/author-jahed-%23007fff)](https://jahed.dev/)
 
 A wrapper which downloads and runs [Terraform](https://www.terraform.io/) 
 locally via [Yarn](https://yarnpkg.com/en/) or [NPM](https://www.npmjs.com/).
