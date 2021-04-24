@@ -1,8 +1,6 @@
 # @jahed/terraform
 
 [![npm](https://img.shields.io/npm/v/@jahed/terraform.svg)](https://www.npmjs.com/package/@jahed/terraform)
-[![Patreon](https://img.shields.io/badge/patreon-donate-f96854.svg)](https://www.patreon.com/jahed)
-[![Liberapay](https://img.shields.io/badge/liberapay-donate-d9b113.svg)](https://liberapay.com/jahed)
 
 A wrapper which downloads and runs [Terraform](https://www.terraform.io/) 
 locally via [Yarn](https://yarnpkg.com/en/) or [NPM](https://www.npmjs.com/).
@@ -15,6 +13,7 @@ locally via [Yarn](https://yarnpkg.com/en/) or [NPM](https://www.npmjs.com/).
 
 ## Useful Links
 
+- [Blog](https://jahed.dev/tags/node-terraform/)
 - [Terraform CHANGELOG](https://github.com/hashicorp/terraform/blob/master/CHANGELOG.md)
 - [Terraform Releases](https://releases.hashicorp.com/terraform/)
 
