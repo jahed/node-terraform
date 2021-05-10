@@ -5,13 +5,13 @@
   "author": "Jahed",
   "license": "MIT",
   "repository": "https://github.com/jahed/node-terraform",
-  "main": "src/terraform.js",
+  "main": "lib/terraform.js",
   "bin": {
     "terraform": "bin/terraform.js"
   },
   "files": [
     "bin",
-    "src",
+    "lib",
     "scripts",
     "hashes.txt"
   ],
@@ -19,10 +19,11 @@
     "install": "node scripts/install.js",
     "version": "./version.sh",
     "test": "./test.sh",
+    "build": "rimraf ./lib && tsc",
     "version-check": "./version-check.sh",
     "dependency-check": "./dependency-check.sh",
     "deps": "yarn upgrade-interactive --latest && yarn upgrade && git add yarn.lock '*package.json' && git commit -m 'build(deps): upgrade dependencies'",
-    "deploy": "yarn version && yarn test && yarn publish --non-interactive && git push --follow-tags"
+    "deploy": "yarn version && yarn build && yarn test && yarn publish --non-interactive && git push --follow-tags"
   },
   "keywords": [
     "terraform",
@@ -56,5 +57,13 @@
     "node-fetch": "^2.6.1",
     "rimraf": "^3.0.2",
     "yauzl": "^2.10.0"
+  },
+  "devDependencies": {
+    "@types/find-cache-dir": "^3.2.0",
+    "@types/node": "^15.0.2",
+    "@types/node-fetch": "^2.5.10",
+    "@types/rimraf": "^3.0.0",
+    "@types/yauzl": "^2.9.1",
+    "typescript": "^4.2.4"
   }
 }

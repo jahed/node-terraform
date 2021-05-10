@@ -14,4 +14,5 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - run: yarn install --frozen-lockfile --prefer-offline
+      - run: yarn build
       - run: yarn test
