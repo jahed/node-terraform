@@ -5,8 +5,8 @@ on:
   push:
     branches: master
     paths:
-      - 'dependency-check.sh'
-      - '.github/workflows/dependency-check.yml'
+      - "dependency-check.sh"
+      - ".github/workflows/dependency-check.yml"
 jobs:
   dependency-check:
     runs-on: ubuntu-latest

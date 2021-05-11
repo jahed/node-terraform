@@ -19,11 +19,11 @@
     "install": "node scripts/install.js",
     "version": "./version.sh",
     "test": "./test.sh",
-    "build": "rimraf ./lib && tsc",
+    "prepare": "rimraf ./lib && tsc",
     "version-check": "./version-check.sh",
     "dependency-check": "./dependency-check.sh",
     "deps": "yarn upgrade-interactive --latest && yarn upgrade && git add yarn.lock '*package.json' && git commit -m 'build(deps): upgrade dependencies'",
-    "deploy": "yarn version && yarn build && yarn test && yarn publish --non-interactive && git push --follow-tags"
+    "deploy": "yarn version && yarn test && yarn publish --non-interactive && git push --follow-tags"
   },
   "keywords": [
     "terraform",
