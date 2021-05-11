@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const { spawn } = require('child_process')
-const { path: execPath } = require('../lib/terraform')
+const { path: execPath } = require('../src/terraform')
 
 const args = process.argv.slice(2)
 
