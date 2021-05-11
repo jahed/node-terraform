@@ -1,0 +1,13 @@
+// https://code.visualstudio.com/docs/remote/devcontainerjson-reference
+{
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "extensions": [
+    "dbaeumer.vscode-eslint"
+  ],
+  "remoteUser": "node"
+}

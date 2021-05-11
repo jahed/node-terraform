@@ -1,4 +1,4 @@
-const outputs = require('../src/terraform')
-const install = require('../src/install')
+const outputs = require('../lib/terraform')
+const { install } = require('../lib/install')
 
 install(outputs)
