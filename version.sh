@@ -16,6 +16,10 @@ curl -s --fail --show-error "https://releases.hashicorp.com/terraform/${VERSION}
   | gpg --verify - hashes.txt
 echo
 
+echo "BUILDING"
+yarn build
+echo
+
 echo "RUNNING TESTS"
 yarn test
 echo

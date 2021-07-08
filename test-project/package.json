@@ -1,0 +1,8 @@
+{
+  "name": "test-project",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@jahed/terraform": "./jahed-terraform.tgz"
+  }
+}

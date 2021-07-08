@@ -32,6 +32,10 @@ EOF
   exit 0
 fi
 
+echo "BUILDING"
+yarn build
+echo
+
 echo "RUNNING TESTS"
 yarn test
 echo

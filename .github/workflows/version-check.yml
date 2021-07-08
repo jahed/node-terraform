@@ -5,8 +5,8 @@ on:
   push:
     branches: master
     paths:
-      - 'version-check.sh'
-      - '.github/workflows/version-check.yml'
+      - "version-check.sh"
+      - ".github/workflows/version-check.yml"
 jobs:
   version-check:
     runs-on: ubuntu-latest
@@ -20,5 +20,5 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - run: yarn install --frozen-lockfile --prefer-offline
+      - run: yarn install --ignore-scripts --frozen-lockfile --prefer-offline
       - run: yarn version-check
