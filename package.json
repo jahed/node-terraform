@@ -52,7 +52,7 @@
   ],
   "dependencies": {
     "@jahed/promises": "^1.0.2",
-    "find-cache-dir": "^3.3.1",
+    "find-cache-dir": "^3.3.2",
     "node-fetch": "^2.6.1",
     "rimraf": "^3.0.2",
     "yauzl": "^2.10.0"
