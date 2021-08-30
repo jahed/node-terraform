@@ -42,7 +42,7 @@ echo
 
 cat <<EOF
 RESULT:
-  Dependencies upgrades.
+  Dependencies upgraded.
 
 Done.
 EOF
