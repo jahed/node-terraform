@@ -5,8 +5,8 @@ on:
   push:
     branches: master
     paths:
-      - 'version-check.sh'
-      - '.github/workflows/version-check.yml'
+      - "version-check.sh"
+      - ".github/workflows/version-check.yml"
 jobs:
   version-check:
     runs-on: ubuntu-latest

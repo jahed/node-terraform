@@ -32,7 +32,15 @@ EOF
   exit 0
 fi
 
-echo "RUNNING TESTS"
+echo "LINTING"
+yarn lint
+echo
+
+echo "BUILDING"
+yarn build
+echo
+
+echo "TESTING"
 yarn test
 echo
 

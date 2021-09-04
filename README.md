@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/@jahed/terraform.svg)](https://www.npmjs.com/package/@jahed/terraform)
 [![author](https://img.shields.io/badge/author-jahed-%23007fff)](https://jahed.dev/)
 
-A wrapper which downloads and runs [Terraform](https://www.terraform.io/) 
+A wrapper which downloads and runs [Terraform](https://www.terraform.io/)
 locally via [npm](https://www.npmjs.com/), [Yarn](https://yarnpkg.com/en/) and
 more.
 
