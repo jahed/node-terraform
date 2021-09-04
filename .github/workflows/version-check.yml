@@ -16,7 +16,7 @@ jobs:
           ssh-key: ${{ secrets.SSH_KEY }}
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
-          cache: 'yarn'
+          node-version: 14
+          cache: yarn
       - run: yarn install
       - run: yarn version-check
