@@ -12,13 +12,11 @@
   "files": [
     "bin",
     "src",
-    "scripts",
     "hashes.txt"
   ],
   "scripts": {
-    "install": "node scripts/install.js",
     "version": "./version.sh",
-    "test": "./test.sh",
+    "test": "./tests/run.sh",
     "version-check": "./version-check.sh",
     "dependency-check": "./dependency-check.sh",
     "deps": "yarn upgrade-interactive --latest && yarn upgrade && git add yarn.lock '*package.json' && git commit -m 'build(deps): upgrade dependencies'",
