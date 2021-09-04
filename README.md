@@ -33,7 +33,6 @@ npm install @jahed/terraform@1.0.6
 
 > Note: If you use [`required_version`](https://www.terraform.io/docs/configuration/terraform.html#specifying-a-required-terraform-version)
 > in your Terraform configuration, make sure it matches the version in your `package.json`.
-> In the future, [this may be automated for you](https://github.com/jahed/node-terraform/issues/9).
 
 ## Configuration
 
