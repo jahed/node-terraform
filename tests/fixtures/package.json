@@ -1,10 +1,10 @@
 {
-    "name": "test-project",
-    "license": "MIT",
-    "scripts": {
-        "postinstall": "terraform init"
-    },
-    "devDependencies": {
-        "@jahed/terraform": "./jahed-terraform.tgz"
-    }
+  "name": "test-project",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "terraform init"
+  },
+  "devDependencies": {
+    "@jahed/terraform": "./jahed-terraform.tgz"
+  }
 }
