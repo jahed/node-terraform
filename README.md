@@ -4,13 +4,14 @@
 [![author](https://img.shields.io/badge/author-jahed-%23007fff)](https://jahed.dev/)
 
 A wrapper which downloads and runs [Terraform](https://www.terraform.io/) 
-locally via [Yarn](https://yarnpkg.com/en/) or [NPM](https://www.npmjs.com/).
+locally via [npm](https://www.npmjs.com/), [Yarn](https://yarnpkg.com/en/) and
+more.
 
-- Automates and manages your Terraform setup like all your other NPM/Yarn dependencies.
+- Automates and manages your Terraform setup like all your other npm/Yarn dependencies.
 - Downloads the correct version of Terraform regardless of which Operating System you're using.
 - Checks downloads against Hashicorp's signed checksums to avoid malicious executables.
 - Decouples your project's Terraform version from your system installation.
-- New releases are semi-automated to stay in sync with official Terraform releases.
+- New releases are automated to stay in sync with official Terraform releases.
 
 ## Useful Links
 
@@ -20,14 +21,14 @@ locally via [Yarn](https://yarnpkg.com/en/) or [NPM](https://www.npmjs.com/).
 
 ## Installation
 
-Install the right version for your project.
+Make sure to install the correct version for your project.
 
 ```sh
 # Latest
 npm install @jahed/terraform
 
 # Specific version
-npm install @jahed/terraform@0.12.29
+npm install @jahed/terraform@1.0.6
 ```
 
 > Note: If you use [`required_version`](https://www.terraform.io/docs/configuration/terraform.html#specifying-a-required-terraform-version)
@@ -47,47 +48,78 @@ following to your `package.json`.
 }
 ```
 
-Now every time you run `npm install` it will also setup and update Terraform.
+Now every time you run `npm install` it will download, setup and update
+Terraform.
 
 ## Usage
 
-You can run any `terraform` command by prefixing it with `npx`.
+In your `package.json` you can add it to your scripts.
+
+```json
+{
+  "scripts": {
+    "deploy": "pull-stuff && terraform apply && push-stuff"
+  }
+}
+```
+
+And run it like any other script.
+
+```sh
+npm run deploy
+```
+
+You can als run any `terraform` command by prefixing it with `npx` within your
+project directory.
 
 ```sh
 npx terraform --help
 ```
 
+> Do not run `npx terraform` outside of your project directory, it will use a
+> completely different package. See [Portable Usage](#portable-usage).
+
+## Portable Usage
+
+You can use `npx` to call Terraform from wherever you want. No installation
+needed.
+
+```sh
+npx @jahed/terraform@1.0.6 --help
+```
+
+Remember, you must always include `@jahed/` prefix. Otherwise you'll end up
+calling some other package. If you'd rather not, you can install the package in
+your project instead so that `terraform` is assigned to `@jahed/terraform`
+anywhere within your project directory.
+
 ## FAQ & Troubleshooting
+
+#### How does this package use Terraform?
+
+This package essentially wraps a Terraform executable. The executable is
+downloaded when the package is first called. Every time you run
+`yarn terraform` it runs a NodeJS script which ensures Terraform has been
+downloaded and launches it in a child process, forwarding arguments, stdin,
+stdout, etc.
 
 #### How is this package versioned?
 
 For consistency, the version of every release matches the version of Terraform.
-There are some downsides to this. If I improve the package and add more
-features, I can't bump the package version using Semantic Version (SemVer) like
+There are some downsides to this. If I improve this package and add more
+features, I can't bump its version using Semantic Version (SemVer) like
 most packages.
 
-For now, I'm using pre-release versions as a workaround. For example
-`v0.11.7-1.0.0` is for Terraform `0.11.7` and package's `1.0.0` release.
-So if you want the latest version, use the latest pre-release, which is versioned using SemVer.
+For improvements to existing releases, I'm using pre-release versions. This also
+allows the package to release new changes, like bug fixes, for older versions.
 
-This also allows the package to release new package changes for older
-Terraform versions.
+For example, version `1.0.2-0.1.0` might introduce a new feature to
+Terraform's `1.0.2` release. `0.1.0` being a minor, non-breaking change in
+Semantic Versioning.
 
-#### How does this package use Terraform?
-
-The package essentially wraps a Terraform executable. The executable is
-downloaded when the package is first installed. Every time you run
-`yarn terraform` it runs a NodeJS script which launches Terraform in a
-child process, forwarding arguments, stdin, stdout, etc.
-
-#### The `terraform` version isn't available
-
-Submit an issue ticket and I'll publish a new version.
-
-#### The `terraform` executable is corrupt
-
-Remove the package and reinstall it. If that doesn't work, submit an issue
-ticket and I'll look into it.
+Typically, if you're using the latest version of Terraform, you'll get the
+latest improvements of this package so you don't need to worry about any of
+this.
 
 #### How do I see what this package is doing?
 
@@ -98,6 +130,15 @@ can enable debug logs using the `NODE_DEBUG` environment variable.
 NODE_DEBUG='@jahed/node-terraform' npx terraform --help
 ```
 
+#### The `terraform` version isn't available
+
+Submit an issue ticket and I'll publish a new version.
+
+#### The `terraform` executable is corrupt
+
+Remove the package and reinstall it. If that doesn't work, submit an issue
+ticket and I'll look into it.
+
 ## License
 
-[MIT](./LICENSE).
+[MIT](./LICENSE)
