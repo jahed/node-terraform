@@ -1,17 +1,10 @@
 import { reason, resolveNullable } from "@jahed/promises";
 
-const getArchitecture = () => {
+const getArchitecture = (): Promise<string> => {
   return resolveNullable(
     {
       arm: "arm",
-      arm64: "arm",
-      ia32: null,
-      mips: null,
-      mipsel: null,
-      ppc: null,
-      ppc64: null,
-      s390: null,
-      s390x: null,
+      arm64: "arm64",
       x32: "386",
       x64: "amd64",
     }[process.arch],
