@@ -1,7 +1,8 @@
 const fs = require('fs')
+const debug = require('./debug')
 
 function makeDirectory(directory) {
-  console.log(`making directory`, { directory })
+  debug('making directory', { directory })
   return fs.promises.mkdir(directory, { recursive: true })
 }
 

@@ -1,15 +1,16 @@
 const fs = require('fs')
 const { eventually, } = require('@jahed/promises')
+const debug = require('./debug')
 
 const fileExists = file => eventually((resolve, reject) => {
   fs.access(file, err => {
     if (err) {
-      console.log('file does not exist', { file })
+      debug('file does not exist', { file })
       reject(err)
       return
     }
 
-    console.log('file already exists', { file })
+    debug('file already exists', { file })
     resolve()
   })
 })

@@ -1,9 +1,10 @@
 const fetch = require('node-fetch')
 const { rejected, reason, waterfall, relay } = require('@jahed/promises')
+const debug = require('./debug')
 
 const download = waterfall(
   relay(
-    args => console.log('downloading', args)
+    args => debug('downloading', args)
   ),
   ({ url }) => fetch(url),
   res => res.ok

@@ -2,9 +2,10 @@ const yauzl = require('yauzl')
 const path = require('path')
 const fs = require('fs')
 const { eventually, reason } = require('@jahed/promises')
+const debug = require('./debug')
 
 function extractArchive({ outputs, buffer, outdir }) {
-  console.log('extracting', { outdir })
+  debug('extracting', { outdir })
   return eventually((resolve, reject) => {
     yauzl.fromBuffer(buffer, { lazyEntries: true }, (err, archive) => {
       if (err) {

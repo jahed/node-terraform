@@ -22,7 +22,7 @@ locally via [Yarn](https://yarnpkg.com/en/) or [NPM](https://www.npmjs.com/).
 
 Install the right version for your project.
 
-```bash
+```sh
 # Latest
 npm install @jahed/terraform
 
@@ -53,7 +53,7 @@ Now every time you run `npm install` it will also setup and update Terraform.
 
 You can run any `terraform` command by prefixing it with `npx`.
 
-```bash
+```sh
 npx terraform --help
 ```
 
@@ -88,6 +88,15 @@ Submit an issue ticket and I'll publish a new version.
 
 Remove the package and reinstall it. If that doesn't work, submit an issue
 ticket and I'll look into it.
+
+#### How do I see what this package is doing?
+
+To see what this package is doing (such as creating files and downloading) you
+can enable debug logs using the `NODE_DEBUG` environment variable.
+
+```sh
+NODE_DEBUG='@jahed/node-terraform' npx terraform --help
+```
 
 ## License
 

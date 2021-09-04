@@ -11,13 +11,14 @@ const downloadTerraformToFile = require('./downloadTerraformToFile')
 const fileExists = require('./fileExists')
 const makeExecutable = require('./makeExecutable')
 const setupOutputDirectory = require('./setupOutputDirectory')
+const debug = require('./debug')
 
 const exit = () => branch(
   filePath => {
-    console.log('installed terraform', { path: filePath })
+    debug('installed terraform', { path: filePath })
   },
   error => {
-    console.error('failed to install terraform.', error)
+    debug('failed to install terraform.', error)
     process.exit(1)
   }
 )
