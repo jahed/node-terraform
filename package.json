@@ -18,10 +18,10 @@
     "lint": "prettier -c **/*.{js,ts,md,json,yml}",
     "build": "rimraf ./lib && tsc",
     "test": "./tests/run.sh",
-    "version": "./version.sh",
+    "version": "./scripts/version.sh",
     "deploy": "yarn lint && yarn version && yarn build && yarn test && yarn publish --non-interactive && git push --follow-tags",
-    "version-check": "./version-check.sh",
-    "dependency-check": "./dependency-check.sh",
+    "version-check": "./scripts/version-check.sh",
+    "dependency-check": "./scripts/dependency-check.sh",
     "deps": "yarn upgrade-interactive --latest && yarn upgrade && git add yarn.lock '*package.json' && git commit -m 'build(deps): upgrade dependencies'"
   },
   "keywords": [
