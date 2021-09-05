@@ -5,10 +5,17 @@
   "author": "Jahed",
   "license": "MIT",
   "repository": "https://github.com/jahed/node-terraform",
+  "funding": "https://jahed.dev/donate",
+  "keywords": [
+    "terraform",
+    "hashicorp",
+    "infrastructure",
+    "automation",
+    "executable",
+    "wrapper"
+  ],
   "main": "lib/terraform.js",
-  "bin": {
-    "terraform": "bin/terraform.js"
-  },
+  "bin": "bin/terraform.js",
   "files": [
     "bin",
     "lib",
@@ -24,32 +31,6 @@
     "dependency-check": "./scripts/dependency-check.sh",
     "deps": "yarn upgrade-interactive --latest && yarn upgrade && git add yarn.lock '*package.json' && git commit -m 'build(deps): upgrade dependencies'"
   },
-  "keywords": [
-    "terraform",
-    "hashicorp",
-    "infrastructure",
-    "automation",
-    "executable",
-    "wrapper"
-  ],
-  "funding": [
-    {
-      "type": "Website",
-      "url": "https://jahed.dev/donate"
-    },
-    {
-      "type": "Patreon",
-      "url": "https://patreon.com/jahed"
-    },
-    {
-      "type": "PayPal",
-      "url": "https://paypal.me/jahed/5"
-    },
-    {
-      "type": "Liberapay",
-      "url": "https://liberapay.com/jahed"
-    }
-  ],
   "dependencies": {
     "@jahed/promises": "^1.0.2",
     "find-cache-dir": "^3.3.2",
