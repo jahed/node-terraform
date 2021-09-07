@@ -1,7 +1,7 @@
 {
   "name": "@jahed/terraform",
   "version": "1.0.6",
-  "description": "Manage Terraform executables via Yarn / NPM.",
+  "description": "A wrapper which downloads and runs Terraform locally via npm, Yarn and more.",
   "author": "Jahed",
   "license": "MIT",
   "repository": "https://github.com/jahed/node-terraform",
