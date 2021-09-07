@@ -7,7 +7,7 @@ if [[ "${CI}" == "true" ]]; then
 fi
 
 echo "UPGRADING DEPENDENCIES"
-yarn upgrade --latest
+yarn upgrade
 echo
 
 echo "AUDITING DEPENDENCIES"
