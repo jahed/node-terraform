@@ -52,7 +52,7 @@ Terraform.
 
 ## Usage
 
-In your `package.json` you can add it to your scripts.
+In your `package.json` you can add `terraform` commands to your scripts.
 
 ```json
 {
@@ -62,14 +62,14 @@ In your `package.json` you can add it to your scripts.
 }
 ```
 
-And run it like any other script.
+And run them like any other script.
 
 ```sh
 npm run deploy
 ```
 
-You can als run any `terraform` command by prefixing it with `npx` within your
-project directory.
+You can also run any `terraform` command within your project directory by
+prefixing it with `npx`.
 
 ```sh
 npx terraform --help
@@ -87,10 +87,10 @@ needed.
 npx @jahed/terraform@1.0.6 --help
 ```
 
-Remember, you must always include `@jahed/` prefix. Otherwise you'll end up
+Remember, you must always prefix it with `@jahed/`. Otherwise you'll end up
 calling some other package. If you'd rather not, you can install the package in
 your project instead so that `terraform` is assigned to `@jahed/terraform`
-anywhere within your project directory.
+anywhere within your project directory. See [Installation](#installation).
 
 ## FAQ & Troubleshooting
 
