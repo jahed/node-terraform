@@ -94,7 +94,7 @@ anywhere within your project directory. See [Installation](#installation).
 
 ## FAQ & Troubleshooting
 
-#### How does this package use Terraform?
+### How does this package use Terraform?
 
 This package essentially wraps a Terraform executable. The executable is
 downloaded when the package is first called. Every time you run
@@ -102,7 +102,7 @@ downloaded when the package is first called. Every time you run
 downloaded and launches it in a child process, forwarding arguments, stdin,
 stdout, etc.
 
-#### How is this package versioned?
+### How is this package versioned?
 
 For consistency, the version of every release matches the version of Terraform.
 There are some downsides to this. If I improve this package and add more
@@ -120,7 +120,7 @@ Typically, if you're using the latest version of Terraform, you'll get the
 latest improvements of this package so you don't need to worry about any of
 this.
 
-#### How do I see what this package is doing?
+### How do I see what this package is doing?
 
 To see what this package is doing (such as creating files and downloading) you
 can enable debug logs using the `NODE_DEBUG` environment variable.
@@ -129,11 +129,11 @@ can enable debug logs using the `NODE_DEBUG` environment variable.
 NODE_DEBUG='@jahed/node-terraform' npx terraform --help
 ```
 
-#### The `terraform` version isn't available
+### The `terraform` version isn't available.
 
 Submit an issue ticket and I'll publish a new version.
 
-#### The `terraform` executable is corrupt
+### The `terraform` executable is corrupt.
 
 Remove the package and reinstall it. If that doesn't work, submit an issue
 ticket and I'll look into it.
