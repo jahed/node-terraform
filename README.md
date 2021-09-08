@@ -15,7 +15,7 @@ more.
 
 ## Useful Links
 
-- [Blog](https://jahed.dev/tags/node-terraform/)
+- [Development Blog](https://jahed.dev/tags/node-terraform/)
 - [Terraform CHANGELOG](https://github.com/hashicorp/terraform/blob/master/CHANGELOG.md)
 - [Terraform Releases](https://releases.hashicorp.com/terraform/)
 
@@ -126,7 +126,7 @@ To see what this package is doing (such as creating files and downloading) you
 can enable debug logs using the `NODE_DEBUG` environment variable.
 
 ```sh
-NODE_DEBUG='@jahed/node-terraform' npx terraform --help
+NODE_DEBUG='@jahed/terraform' npx terraform --help
 ```
 
 ### The `terraform` version isn't available.
