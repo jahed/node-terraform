@@ -75,8 +75,23 @@ prefixing it with `npx`.
 npx terraform --help
 ```
 
-> Do not run `npx terraform` outside of your project directory, it will use a
-> completely different package. See [Portable Usage](#portable-usage).
+Do not run `npx terraform` outside of your project directory, it will use a
+completely different package. See [Portable Usage](#portable-usage) for using
+`npx` safely or perform a [Global Installation](#global-installation) to have
+`terraform` available everywhere on your system.
+
+## Global Installation
+
+Like with any npm package, you can install the package globally and have it
+available anywhere on your system.
+
+```sh
+npm install -g @jahed/terraform@1.0.6
+terraform --help
+```
+
+Make sure you don't have another `terraform` already installed in your `PATH`
+as it may take priority.
 
 ## Portable Usage
 
@@ -88,9 +103,9 @@ npx @jahed/terraform@1.0.6 --help
 ```
 
 Remember, you must always prefix it with `@jahed/`. Otherwise you'll end up
-calling some other package. If you'd rather not, you can install the package in
-your project instead so that `terraform` is assigned to `@jahed/terraform`
-anywhere within your project directory. See [Installation](#installation).
+calling some other package. If you'd rather not, you can install the package
+[globally on your system](#global-installation) or
+[locally for your project](#installation).
 
 ## FAQ & Troubleshooting
 
