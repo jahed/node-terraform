@@ -53,13 +53,11 @@ function run_tests {
   echo "[${1}] Tests passed."
 }
 
-tarball_path="./jahed-terraform.tgz"
 expected_version="$(cat package.json | jq -r '.version' | cut -d'-' -f1)"
 
 echo
 echo "PACKING"
-yarn pack --filename "${tarball_path}"
-
+mv "$(npm pack)" ./jahed-terraform.tgz
 
 variants="${@:-"npm yarn"}"
 

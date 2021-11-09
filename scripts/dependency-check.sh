@@ -7,15 +7,19 @@ if [[ "${CI}" == "true" ]]; then
 fi
 
 echo "UPGRADING DEPENDENCIES"
-yarn upgrade
+npm ci
+npx ncu --target minor --upgrade
+npm install
+npm upgrade
+npm install
 echo
 
 echo "AUDITING DEPENDENCIES"
-yarn audit
+npm audit
 echo
 
 echo "COMMITTING CHANGES"
-git add yarn.lock '*package.json'
+git add package-lock.json package.json
 set +e
 git commit -m 'build(deps): upgrade dependencies'
 RESULT=$?
@@ -33,15 +37,15 @@ EOF
 fi
 
 echo "LINTING"
-yarn lint
+npm run lint
 echo
 
 echo "BUILDING"
-yarn build
+npm run build
 echo
 
 echo "TESTING"
-yarn test
+npm test
 echo
 
 echo "PUSHING CHANGES"

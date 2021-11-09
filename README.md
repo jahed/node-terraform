@@ -119,10 +119,9 @@ directory. For more information, check
 ### How does this package use Terraform?
 
 This package essentially wraps a Terraform executable. The executable is
-downloaded when the package is first called. Every time you run
-`yarn terraform` it runs a NodeJS script which ensures Terraform has been
-downloaded and launches it in a child process, forwarding arguments, stdin,
-stdout, etc.
+downloaded when the package is first called. Every time you run it, it runs
+a NodeJS script which ensures Terraform has been downloaded and launches it in
+a child process, forwarding arguments, stdin, stdout, etc.
 
 ### How is this package versioned?
 

@@ -1,7 +1,7 @@
 {
   "name": "@jahed/terraform",
   "version": "1.0.10",
-  "description": "A wrapper which downloads and runs Terraform locally via npm, Yarn and more.",
+  "description": "A wrapper which downloads and runs Terraform locally via npm, yarn and more.",
   "author": "Jahed",
   "license": "MIT",
   "repository": "https://github.com/jahed/node-terraform",
@@ -25,27 +25,24 @@
     "lint": "prettier -c **/*.{js,ts,md,json,yml}",
     "build": "rimraf ./lib && tsc",
     "test": "./tests/run.sh",
-    "version": "./scripts/version.sh",
-    "deploy": "yarn lint && yarn version && yarn build && yarn test && yarn publish --non-interactive && git push --follow-tags",
-    "version-check": "./scripts/version-check.sh",
-    "dependency-check": "./scripts/dependency-check.sh",
-    "deps": "yarn upgrade-interactive --latest && yarn upgrade && git add yarn.lock '*package.json' && git commit -m 'build(deps): upgrade dependencies'"
+    "version": "./scripts/verify-version.sh"
   },
   "dependencies": {
     "@jahed/promises": "^1.0.2",
     "find-cache-dir": "^3.3.2",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.6",
     "rimraf": "^3.0.2",
     "yauzl": "^2.10.0"
   },
   "devDependencies": {
     "@tsconfig/node12": "^1.0.9",
-    "@types/find-cache-dir": "^3.2.0",
-    "@types/node": "^14.17.4",
-    "@types/node-fetch": "^2.5.10",
-    "@types/rimraf": "^3.0.0",
-    "@types/yauzl": "^2.9.1",
-    "prettier": "^2.3.2",
+    "@types/find-cache-dir": "^3.2.1",
+    "@types/node": "^16.11.7",
+    "@types/node-fetch": "^2.5.12",
+    "@types/rimraf": "^3.0.2",
+    "@types/yauzl": "^2.9.2",
+    "npm-check-updates": "^12.0.2",
+    "prettier": "^2.4.1",
     "typescript": "4.4.x"
   }
 }

@@ -17,11 +17,11 @@ curl -s --fail --show-error "https://releases.hashicorp.com/terraform/${VERSION}
 echo
 
 echo "BUILDING"
-yarn build
+npm run build
 echo
 
 echo "RUNNING TESTS"
-yarn test
+npm test
 echo
 
 echo "STAGING HASHES"

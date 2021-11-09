@@ -13,6 +13,7 @@ const getPlatform = () => {
       android: null,
       cygwin: null,
       netbsd: null,
+      haiku: null,
     }[process.platform],
     reason(`"${process.platform}" platform is not supported by terraform.`)
   );

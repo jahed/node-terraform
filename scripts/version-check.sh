@@ -21,7 +21,7 @@ for version in $NEXT_PATCH $NEXT_MINOR $NEXT_MAJOR; do
   echo "ATTEMPTING VERSION BUMP"
   echo "  New Version: v${version}"
   set +e
-  yarn version --new-version "${version}"
+  npm version "${version}"
   RESULT=$?
   set -e
   echo
