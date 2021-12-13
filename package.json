@@ -37,11 +37,11 @@
   "devDependencies": {
     "@tsconfig/node12": "^1.0.9",
     "@types/find-cache-dir": "^3.2.1",
-    "@types/node": "^16.11.11",
+    "@types/node": "^16.11.12",
     "@types/node-fetch": "^2.5.12",
     "@types/rimraf": "^3.0.2",
     "@types/yauzl": "^2.9.2",
-    "npm-check-updates": "^12.0.2",
+    "npm-check-updates": "^12.0.3",
     "prettier": "^2.5.1",
     "typescript": "4.5.x"
   }
