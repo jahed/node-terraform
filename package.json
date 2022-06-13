@@ -35,9 +35,9 @@
     "yauzl": "^2.10.0"
   },
   "devDependencies": {
-    "@tsconfig/node12": "^1.0.9",
+    "@tsconfig/node12": "^1.0.10",
     "@types/find-cache-dir": "^3.2.1",
-    "@types/node": "^16.11.38",
+    "@types/node": "^16.11.39",
     "@types/node-fetch": "^2.6.1",
     "@types/rimraf": "^3.0.2",
     "@types/yauzl": "^2.10.0",
