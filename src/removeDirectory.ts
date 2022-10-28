@@ -1,18 +1,9 @@
-import { eventually } from "@jahed/promises";
-import rimraf from "rimraf";
 import { debug } from "./debug";
+import { rm } from "fs/promises";
 
 const removeDirectory = (directory: string): Promise<void> => {
-  return eventually((resolve, reject) => {
-    debug("removing directory", { directory });
-    rimraf(directory, (err) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-      resolve();
-    });
-  });
+  debug("removing directory", { directory });
+  return rm(directory, { recursive: true, force: true });
 };
 
 export { removeDirectory };
