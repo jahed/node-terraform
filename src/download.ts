@@ -1,12 +1,26 @@
-import { reason, rejected, relay, waterfall } from "@jahed/promises";
-import fetch from "node-fetch";
+import { get } from "https";
 import { debug } from "./debug";
 
-const download = waterfall(
-  relay((args) => debug("downloading", args)),
-  ({ url }) => fetch(url),
-  (res) =>
-    res.ok ? res : rejected(reason(`status was not okay (${res.status})`))
-);
+const download = (args: { url: string }) => {
+  debug("downloading", args);
+  return new Promise((resolve, reject) => {
+    const req = get(args.url, (res) => {
+      if (res.statusCode !== 200) {
+        reject(new Error(`status was not okay (${res.statusCode})`));
+        return;
+      }
+
+      const buffers: Buffer[] = [];
+      res.on("data", (chunk) => {
+        buffers.push(chunk);
+      });
+      res.on("end", () => {
+        resolve(Buffer.concat(buffers));
+      });
+    });
+
+    req.on("error", reject);
+  });
+};
 
 export { download };

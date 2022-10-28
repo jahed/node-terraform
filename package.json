@@ -22,7 +22,7 @@
     "hashes.txt"
   ],
   "scripts": {
-    "lint": "prettier -c **/*.{js,ts,md,json,yml}",
+    "lint": "prettier -c .",
     "build": "rimraf ./lib && tsc",
     "test": "./tests/run.sh",
     "version": "./scripts/verify-version.sh"
@@ -30,7 +30,6 @@
   "dependencies": {
     "@jahed/promises": "^1.0.2",
     "find-cache-dir": "^3.3.2",
-    "node-fetch": "^2.6.7",
     "rimraf": "^3.0.2",
     "yauzl": "^2.10.0"
   },
@@ -38,7 +37,6 @@
     "@tsconfig/node12": "^1.0.11",
     "@types/find-cache-dir": "^3.2.1",
     "@types/node": "^16.18.2",
-    "@types/node-fetch": "^2.6.2",
     "@types/rimraf": "^3.0.2",
     "@types/yauzl": "^2.10.0",
     "npm-check-updates": "^16.3.15",

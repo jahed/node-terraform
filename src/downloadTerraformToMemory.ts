@@ -19,8 +19,7 @@ const downloadTerraformToMemory = waterfall(
     return every({
       buffer: waterfall(
         () => getDownloadUrl(args),
-        (url) => download({ url }),
-        (res) => res.buffer()
+        (url) => download({ url })
       )(""),
       expectedHash: getExpectedHash(args),
     });
