@@ -2,8 +2,8 @@ on:
   workflow_dispatch:
     inputs:
       upgradeLevel:
-        description: 'Upgrade level'     
-        default: 'minor'
+        description: "Upgrade level"
+        default: "minor"
   schedule:
     - cron: 0 13 * * 1
   push:
