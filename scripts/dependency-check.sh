@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-set -eo pipefail
+set -euo pipefail
 
-if [[ "${CI}" == "true" ]]; then
+if [[ "${CI:}" == "true" ]]; then
   git config user.email "jahed.public+ci@gmail.com"
   git config user.name "${GITHUB_ACTOR}"
 fi
@@ -28,12 +28,12 @@ if ! git diff --quiet --cached --exit-code; then
 fi
 echo
 
-if test "${INPUT_UPGRADELEVEL}" = "major"; then
+if test "${INPUT_UPGRADELEVEL:}" = "major"; then
   echo "UPGRADING MAJOR DEPENDENCIES"
-  npx ncu --target major --upgrade
+  npx ncu --target latest --upgrade
 else
   echo "CHECKING MAJOR DEPENDENCIES"
-  npx ncu --target major
+  npx ncu --target latest
 fi
 echo
 
