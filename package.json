@@ -37,7 +37,7 @@
     "@types/find-cache-dir": "^3.2.1",
     "@types/node": "^16.18.3",
     "@types/yauzl": "^2.10.0",
-    "npm-check-updates": "^16.3.16",
+    "npm-check-updates": "^16.4.0",
     "prettier": "^2.7.1",
     "typescript": "4.8.x"
   }
