@@ -20,3 +20,6 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: gh release create
+        env:
+          GH_TOKEN: ${{ github.token }}
