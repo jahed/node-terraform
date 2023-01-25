@@ -1,7 +1,7 @@
 import { get } from "https";
 import { debug } from "./debug";
 
-const download = (args: { url: string }) => {
+const download = (args: { url: string }): Promise<Buffer> => {
   debug("downloading", args);
   return new Promise((resolve, reject) => {
     const req = get(args.url, (res) => {

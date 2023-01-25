@@ -19,17 +19,18 @@
   "files": [
     "bin",
     "lib",
-    "hashes.txt"
+    "hashicorp.asc"
   ],
   "scripts": {
     "lint": "prettier -c .",
     "build": "rm -rf ./lib && tsc",
     "test": "./tests/run.sh",
-    "version": "./scripts/verify-version.sh"
+    "version": "npm run build && npm run test"
   },
   "dependencies": {
     "@jahed/promises": "^1.0.2",
     "find-cache-dir": "^3.3.2",
+    "openpgp": "^5.5.0",
     "yauzl": "^2.10.0"
   },
   "devDependencies": {
