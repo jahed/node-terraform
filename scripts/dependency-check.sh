@@ -28,13 +28,8 @@ if ! git diff --quiet --cached --exit-code; then
 fi
 echo
 
-if test "${INPUT_UPGRADELEVEL-}" = "major"; then
-  echo "UPGRADING MAJOR DEPENDENCIES"
-  npx ncu --target latest --upgrade
-else
-  echo "CHECKING MAJOR DEPENDENCIES"
-  npx ncu --target latest
-fi
+echo "CHECKING MAJOR DEPENDENCIES"
+npx ncu --target latest
 echo
 
 if git diff --quiet --exit-code master origin/master; then
