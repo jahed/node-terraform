@@ -38,11 +38,11 @@
     "yauzl": "^2.10.0"
   },
   "devDependencies": {
-    "@tsconfig/node16": "^1.0.3",
+    "@tsconfig/node16": "^1.0.4",
     "@types/find-cache-dir": "^3.2.1",
-    "@types/node": "^16.18.26",
+    "@types/node": "^16.18.30",
     "@types/yauzl": "^2.10.0",
-    "npm-check-updates": "^16.10.10",
+    "npm-check-updates": "^16.10.12",
     "prettier": "^2.8.8",
     "typescript": "4.9.x"
   }
