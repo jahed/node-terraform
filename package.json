@@ -34,13 +34,13 @@
   "dependencies": {
     "@jahed/promises": "^1.0.2",
     "find-cache-dir": "^3.3.2",
-    "openpgp": "^5.8.0",
+    "openpgp": "^5.9.0",
     "yauzl": "^2.10.0"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.4",
     "@types/find-cache-dir": "^3.2.1",
-    "@types/node": "^16.18.30",
+    "@types/node": "^16.18.32",
     "@types/yauzl": "^2.10.0",
     "npm-check-updates": "^16.10.12",
     "prettier": "^2.8.8",
