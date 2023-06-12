@@ -16,7 +16,7 @@ jobs:
           ssh-key: ${{ secrets.SSH_KEY }}
       - uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: "20"
           cache: "npm"
       - run: npm ci
       - run: ./scripts/version-check.sh
