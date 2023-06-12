@@ -1,6 +1,6 @@
 {
   "name": "@jahed/terraform",
-  "version": "1.4.6",
+  "version": "1.5.0",
   "description": "A wrapper which downloads and runs Terraform locally via npm, yarn and more.",
   "author": "Jahed Ahmed <jahed.public@gmail.com> (https://jahed.dev)",
   "license": "MIT",
