@@ -59,7 +59,7 @@ echo
 echo "PACKING"
 mv "$(npm pack)" ./jahed-terraform.tgz
 
-variants="${@:-"npm yarn"}"
+variants="${@:-"npm pnpm"}"
 
 for variant in ${variants}; do
   run_tests "${variant}"

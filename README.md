@@ -4,10 +4,9 @@
 [![author](https://img.shields.io/badge/author-jahed-%23007fff)](https://jahed.dev/)
 
 A wrapper which downloads and runs [Terraform](https://www.terraform.io/)
-locally via [npm](https://www.npmjs.com/), [Yarn](https://yarnpkg.com/en/) and
-more.
+locally via [npm](https://www.npmjs.com/).
 
-- Automates and manages your Terraform setup like all your other npm/Yarn dependencies.
+- Automates and manages your Terraform setup like all your other npm dependencies.
 - Downloads the correct version of Terraform regardless of which Operating System you're using.
 - Checks downloads against Hashicorp's signed checksums to avoid malicious executables.
 - Decouples your project's Terraform version from your system installation.

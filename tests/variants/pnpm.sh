@@ -1,7 +1,7 @@
 function x_install {
-  yarn install $@
+  pnpm install $@
 }
 
 function x_terraform {
-  yarn terraform $@
+  pnpm exec terraform $@
 }
