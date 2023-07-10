@@ -52,7 +52,13 @@ const extractArchive = ({ outputs, buffer, outdir }: ExtractArgs) => {
           readStream.on("error", (error) => reject(error));
           readStream.on("end", () => {
             archive.close();
-            resolve(filePath);
+            fileStream.close((error) => {
+              if (error) {
+                reject(error)
+                return
+              }
+              resolve(filePath);
+            })
           });
           readStream.pipe(fileStream);
         });
