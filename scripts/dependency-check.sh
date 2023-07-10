@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if [[ "${CI-}" == "true" ]]; then
-  git config user.email "jahed.public+ci@gmail.com"
+  git config user.email "${GIT_EMAIL}"
   git config user.name "${GITHUB_ACTOR}"
 fi
 

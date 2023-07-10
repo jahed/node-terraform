@@ -17,3 +17,5 @@ jobs:
           node-version: "20"
           cache: "npm"
       - run: ./scripts/dependency-check.sh
+        env:
+          GIT_EMAIL: ${{ vars.GIT_EMAIL }}

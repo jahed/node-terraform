@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-set -eo pipefail
+set -euo pipefail
 
-if [[ "${CI}" == "true" ]]; then
-  git config user.email "jahed.public+ci@gmail.com"
+if [[ "${CI-}" == "true" ]]; then
+  git config user.email "${GIT_EMAIL}"
   git config user.name "${GITHUB_ACTOR}"
 fi
 

@@ -20,3 +20,5 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: ./scripts/version-check.sh
+        env:
+          GIT_EMAIL: ${{ vars.GIT_EMAIL }}
