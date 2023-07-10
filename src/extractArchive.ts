@@ -54,11 +54,11 @@ const extractArchive = ({ outputs, buffer, outdir }: ExtractArgs) => {
             archive.close();
             fileStream.close((error) => {
               if (error) {
-                reject(error)
-                return
+                reject(error);
+                return;
               }
               resolve(filePath);
-            })
+            });
           });
           readStream.pipe(fileStream);
         });
