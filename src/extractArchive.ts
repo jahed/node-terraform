@@ -66,7 +66,7 @@ const extractArchive = ({ outputs, buffer, outdir }: ExtractArgs) => {
           reason(
             `expected zip to contain a terraform executable. (${outputs.originalFilename})`
           )
-        )
+        );
       });
 
       archive.readEntry();
