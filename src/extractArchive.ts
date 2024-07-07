@@ -25,6 +25,7 @@ const extractArchive = ({ outputs, buffer, outdir }: ExtractArgs) => {
       archive.on("entry", (entry) => {
         if (entry.fileName !== outputs.originalFilename) {
           // ignore LICENSE.txt and any other additional files
+          archive.readEntry();
           return;
         }
 
@@ -58,6 +59,14 @@ const extractArchive = ({ outputs, buffer, outdir }: ExtractArgs) => {
           });
           readStream.pipe(fileStream);
         });
+      });
+
+      archive.on("end", () => {
+        reject(
+          reason(
+            `expected zip to contain a terraform executable. (${entry.fileName})`
+          )
+        )
       });
 
       archive.readEntry();
