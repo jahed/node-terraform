@@ -24,11 +24,7 @@ const extractArchive = ({ outputs, buffer, outdir }: ExtractArgs) => {
 
       archive.on("entry", (entry) => {
         if (entry.fileName !== outputs.originalFilename) {
-          reject(
-            reason(
-              `expected zip to only contain a terraform executable. (${entry.fileName})`
-            )
-          );
+          // ignore LICENSE.txt and any other additional files
           return;
         }
 
