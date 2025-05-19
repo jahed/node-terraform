@@ -34,7 +34,7 @@
   "dependencies": {
     "@jahed/promises": "^1.0.2",
     "find-cache-dir": "^3.3.2",
-    "openpgp": "^5.11.2",
+    "openpgp": "^5.11.3",
     "yauzl": "^2.10.0"
   },
   "devDependencies": {
