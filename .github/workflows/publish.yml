@@ -5,6 +5,7 @@ on:
       - "v[0-9]*"
 jobs:
   publish:
+    environment: publish
     permissions:
       contents: write # release
       id-token: write # provenance
