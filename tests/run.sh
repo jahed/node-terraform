@@ -12,7 +12,7 @@ function run_tests {
   echo "[${1}] SETTING UP TEST PROJECT"
   local project_dir="$(mktemp --tmpdir -d node-terraform-test-XXXX)"
   cp -r ./tests/fixtures/. "${project_dir}"
-  cp ./jahed-terraform.tgz "${project_dir}"
+  cp ./artifacts/package.tgz "${project_dir}"
   echo "[${1}] Created: ${project_dir}"
   pushd "${project_dir}"
 
@@ -54,10 +54,6 @@ function run_tests {
 }
 
 expected_version="$(cat package.json | jq -r '.version' | cut -d'-' -f1)"
-
-echo
-echo "PACKING"
-mv "$(npm pack)" ./jahed-terraform.tgz
 
 variants="${@:-"npm"}"
 

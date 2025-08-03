@@ -5,6 +5,6 @@
     "postinstall": "terraform init"
   },
   "devDependencies": {
-    "@jahed/terraform": "./jahed-terraform.tgz"
+    "@jahed/terraform": "./package.tgz"
   }
 }

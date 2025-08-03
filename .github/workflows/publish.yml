@@ -1,10 +1,14 @@
+name: publish
 on:
   workflow_dispatch:
   push:
     tags:
       - "v[0-9]*"
 jobs:
+  build:
+    uses: ./.github/workflows/build.yml
   publish:
+    needs: [build]
     environment: publish
     permissions:
       contents: write # release
@@ -17,11 +21,11 @@ jobs:
           node-version: "24"
           registry-url: "https://registry.npmjs.org"
           cache: "npm"
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run build
-      - run: npm test
-      - run: npm publish --provenance --access public
+      - uses: actions/download-artifact@v4
+        with:
+          artifact-ids: ${{ needs.build.outputs.artifact-id }}
+          path: ./
+      - run: npm publish --provenance --access public ./artifacts/package.tgz
       - run: gh release create --verify-tag "v$(jq -r .version package.json)"
         env:
           GH_TOKEN: ${{ github.token }}

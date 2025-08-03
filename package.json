@@ -27,7 +27,7 @@
   ],
   "scripts": {
     "lint": "prettier -c .",
-    "build": "rm -rf ./lib && tsc",
+    "build": "rm -rf ./lib ./artifacts && tsc && mkdir ./artifacts && mv \"$(npm pack)\" ./artifacts/package.tgz",
     "test": "./tests/run.sh",
     "version": "npm run build && npm run test"
   },
