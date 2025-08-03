@@ -1,3 +1,4 @@
+name: dependency-check
 on:
   workflow_dispatch:
   schedule:
