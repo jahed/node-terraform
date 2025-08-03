@@ -5,6 +5,9 @@ on:
       - "v[0-9]*"
 jobs:
   publish:
+    permissions:
+      contents: write # release
+      id-token: write # provenance
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,7 +20,7 @@ jobs:
       - run: npm run lint
       - run: npm run build
       - run: npm test
-      - run: npm publish
+      - run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: gh release create --verify-tag "v$(jq -r .version package.json)"
