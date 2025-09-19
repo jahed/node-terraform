@@ -1,4 +1,5 @@
 name: dependency-check
+concurrency: dependency-check
 on:
   workflow_dispatch:
   schedule:

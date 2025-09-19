@@ -1,4 +1,5 @@
 name: version-check
+concurrency: version-check
 on:
   workflow_dispatch:
   schedule:
