@@ -1,4 +1,4 @@
-import findCacheDir from "find-cache-dir";
+import findCacheDirectory from "find-cache-directory";
 import path from "path";
 import fs from "fs";
 
@@ -25,7 +25,7 @@ const getOutputs = () => {
 
   const version = packageJson.version.split("-")[0];
 
-  const cacheDir = findCacheDir({
+  const cacheDir = findCacheDirectory({
     name: packageJson.name,
     cwd: process.env.INIT_CWD,
   });

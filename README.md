@@ -108,10 +108,10 @@ calling some other package. If you'd rather not, you can install the package
 
 ## Download Directory
 
-This package uses `find-cache-dir` to decide where to download files to.
+This package uses `find-cache-directory` to decide where to download files to.
 Provide a `CACHE_DIR` environment variable to override the default cache
 directory. For more information, check
-[`find-cache-dir`'s documentation](https://github.com/avajs/find-cache-dir).
+[`find-cache-directory`'s documentation](https://github.com/sindresorhus/find-cache-directory).
 
 ## FAQ & Troubleshooting
 
