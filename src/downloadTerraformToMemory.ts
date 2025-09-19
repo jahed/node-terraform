@@ -19,7 +19,7 @@ const downloadTerraformToMemory = waterfall(
     return every({
       buffer: waterfall(
         () => getDownloadUrl(args),
-        (url) => download({ url })
+        (url) => download({ url }),
       )(""),
       expectedHash: getExpectedHash(args),
     });
@@ -28,11 +28,11 @@ const downloadTerraformToMemory = waterfall(
     const hash = crypto.createHash("sha256").update(buffer).digest("hex");
     if (hash !== expectedHash) {
       return rejected(
-        reason("downloaded archive hash did not match expected hash")
+        reason("downloaded archive hash did not match expected hash"),
       );
     }
     return buffer;
-  }
+  },
 );
 
 export { downloadTerraformToMemory };

@@ -15,7 +15,7 @@ const getPlatform = () => {
       netbsd: null,
       haiku: null,
     }[process.platform],
-    reason(`"${process.platform}" platform is not supported by terraform.`)
+    reason(`"${process.platform}" platform is not supported by terraform.`),
   );
 };
 

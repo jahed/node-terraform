@@ -16,7 +16,7 @@ const getExpectedHash = async (args: DownloadArgs) => {
   const publicKey = await openpgp.readKey({
     armoredKey: await readFile(
       path.resolve(__dirname, "../hashicorp.asc"),
-      "utf-8"
+      "utf-8",
     ),
   });
 

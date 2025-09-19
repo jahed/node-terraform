@@ -9,12 +9,12 @@ const downloadTerraformToFile = waterfall(
       outputs,
       outdir: coalesce(
         () => resolveNullable(outdir),
-        () => path.resolve(process.cwd())
+        () => path.resolve(process.cwd()),
       ),
       buffer: downloadTerraformToMemory(outputs),
     });
   },
-  (args) => extractArchive(args)
+  (args) => extractArchive(args),
 );
 
 export { downloadTerraformToFile };

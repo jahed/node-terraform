@@ -22,7 +22,7 @@ const exit = () =>
     (error) => {
       debug("failed to install terraform.", error);
       process.exit(1);
-    }
+    },
   );
 
 const downloadTerraformToDirectory = () =>
@@ -33,7 +33,7 @@ const downloadTerraformToDirectory = () =>
         outdir: setupOutputDirectory(outputs),
       }),
     (args) => downloadTerraformToFile(args),
-    relay((filePath) => makeExecutable(filePath))
+    relay((filePath) => makeExecutable(filePath)),
   );
 
 const doInstall = () => compose(downloadTerraformToDirectory(), exit());
@@ -44,7 +44,7 @@ const checkPrerequisites = () => {
 
 const install = compose(
   checkPrerequisites() as () => Promise<any>,
-  branch(doInstall(), doNothing())
+  branch(doInstall(), doNothing()),
 );
 
 export { install };

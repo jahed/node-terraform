@@ -7,8 +7,8 @@ const setupOutputDirectory = waterfall(
   (outputs) => path.dirname(outputs.path),
   relay(
     (outdir) => removeDirectory(outdir),
-    (outdir) => makeDirectory(outdir)
-  )
+    (outdir) => makeDirectory(outdir),
+  ),
 );
 
 export { setupOutputDirectory };

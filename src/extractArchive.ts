@@ -24,13 +24,13 @@ export const extractArchive = async ({
             return;
           }
           resolve(unzipped);
-        }
+        },
       );
     });
 
   if (!fileContent) {
     throw new Error(
-      `expected zip to contain a terraform executable. (${outputs.originalFilename})`
+      `expected zip to contain a terraform executable. (${outputs.originalFilename})`,
     );
   }
 

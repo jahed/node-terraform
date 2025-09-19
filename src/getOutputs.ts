@@ -20,7 +20,7 @@ const getOutputs = () => {
   const packageJson = JSON.parse(
     fs
       .readFileSync(path.resolve(__dirname, "../package.json"))
-      .toString("utf-8")
+      .toString("utf-8"),
   );
 
   const version = packageJson.version.split("-")[0];
