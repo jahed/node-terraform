@@ -1,15 +1,10 @@
-import { reason, resolveNullable } from "@jahed/promises";
+export async function getArchitecture (): Promise<string> {
+  switch(process.arch) {
+    case "x64": return "amd64"
+    case "arm64": return "arm64"
+    case "ia32": return "386"
+    case "arm": return "arm"
+  }
 
-const getArchitecture = (): Promise<string> => {
-  return resolveNullable(
-    {
-      arm: "arm",
-      arm64: "arm64",
-      x32: "386",
-      x64: "amd64",
-    }[process.arch],
-    reason(`"${process.arch}" architecture is not supported by terraform.`)
-  );
+  throw new Error(`"${process.arch}" architecture is not supported by terraform.`)
 };
-
-export { getArchitecture };
