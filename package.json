@@ -40,7 +40,6 @@
   "devDependencies": {
     "@tsconfig/node20": "^20.1.6",
     "@types/node": "^20.19.17",
-    "npm-check-updates": "^16.14.20",
     "prettier": "^3.6.2",
     "typescript": "5.9.x"
   }

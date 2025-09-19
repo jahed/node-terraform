@@ -10,26 +10,17 @@ echo "INSTALLING DEPENDENCIES"
 npm ci
 echo
 
-echo "UPGRADING MINOR DEPENDENCIES"
-npx ncu --target minor --upgrade
-npm install
-git add package-lock.json package.json
-if ! git diff --quiet --cached --exit-code; then
-  git commit -m 'build(deps): upgrade minor dependencies'
-fi
-echo
-
-echo "UPGRADING TRANSITIVE DEPENDENCIES"
+echo "UPGRADING DEPENDENCIES"
 npm upgrade
 npm install
 git add package-lock.json package.json
 if ! git diff --quiet --cached --exit-code; then
-  git commit -m 'build(deps): upgrade transitive dependencies'
+  git commit -m 'build(deps): upgrade dependencies'
 fi
 echo
 
-echo "CHECKING MAJOR DEPENDENCIES"
-npx ncu --target latest
+echo "OUTDATED DEPENDENCIES"
+npm outdated || true
 echo
 
 if git diff --quiet --exit-code master origin/master; then
