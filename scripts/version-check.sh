@@ -21,7 +21,7 @@ for version in $NEXT_PATCH $NEXT_MINOR $NEXT_MAJOR; do
   echo "ATTEMPTING VERSION BUMP"
   echo "  New Version: v${version}"
   set +e
-  npm version "${version}"
+  npm version "${version}" && npm run build && npm run test
   RESULT=$?
   set -e
   echo
