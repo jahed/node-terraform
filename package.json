@@ -25,6 +25,16 @@
     "lib",
     "hashicorp.asc"
   ],
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "20"
+    },
+    "packageManager": {
+      "name": "npm",
+      "version": "10"
+    }
+  },
   "scripts": {
     "lint": "prettier -c .",
     "format": "prettier -w .",
