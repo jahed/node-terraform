@@ -28,11 +28,13 @@
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "20"
+      "version": "20",
+      "onFail": "warn"
     },
     "packageManager": {
       "name": "npm",
-      "version": "10"
+      "version": "10",
+      "onFail": "warn"
     }
   },
   "scripts": {
