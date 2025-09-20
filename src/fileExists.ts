@@ -1,20 +1,13 @@
-import { eventually } from "@jahed/promises";
-import fs from "fs";
+import fs from "node:fs/promises";
 import { debug } from "./debug";
 
-const fileExists = (file: string): Promise<void> => {
-  return eventually((resolve, reject) => {
-    fs.access(file, (err) => {
-      if (err) {
-        debug("file does not exist", { file });
-        reject(err);
-        return;
-      }
-
-      debug("file already exists", { file });
-      resolve();
-    });
-  });
-};
-
-export { fileExists };
+export async function fileExists(file: string): Promise<boolean> {
+  try {
+    await fs.access(file);
+    debug("file already exists", { file });
+    return true;
+  } catch {
+    debug("file does not exist", { file });
+    return false;
+  }
+}

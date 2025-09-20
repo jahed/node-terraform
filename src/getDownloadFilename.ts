@@ -1,11 +1,9 @@
-import { DownloadArgs } from "./types";
+import type { DownloadArgs } from "./types";
 
-const getDownloadFilename = ({
+export function getDownloadFilename({
   version,
   platform,
   architecture,
-}: DownloadArgs) => {
+}: DownloadArgs) {
   return `terraform_${version}_${platform}_${architecture}.zip`;
-};
-
-export { getDownloadFilename };
+}

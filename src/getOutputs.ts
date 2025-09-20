@@ -1,8 +1,9 @@
 import findCacheDirectory from "find-cache-directory";
-import path from "path";
-import fs from "fs";
+import fs from "node:fs";
+import path from "node:path";
+import type { Outputs } from "./types";
 
-const getFilenames = (version: string) => {
+function getFilenames(version: string) {
   if (process.platform === "win32") {
     return {
       originalFilename: "terraform.exe",
@@ -14,9 +15,9 @@ const getFilenames = (version: string) => {
     originalFilename: "terraform",
     versionedFilename: `terraform-v${version}`,
   };
-};
+}
 
-const getOutputs = () => {
+export function getOutputs(): Outputs {
   const packageJson = JSON.parse(
     fs
       .readFileSync(path.resolve(__dirname, "../package.json"))
@@ -44,6 +45,4 @@ const getOutputs = () => {
     versionedFilename,
     originalFilename,
   };
-};
-
-export { getOutputs };
+}

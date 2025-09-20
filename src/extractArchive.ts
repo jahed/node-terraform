@@ -1,14 +1,14 @@
+import fflate, { type Unzipped } from "fflate";
 import fs from "node:fs/promises";
 import path from "node:path";
-import fflate, { Unzipped } from "fflate";
 import { debug } from "./debug";
-import { ExtractArgs } from "./types";
+import type { ExtractArgs } from "./types";
 
-export const extractArchive = async ({
+export async function extractArchive({
   outputs,
   buffer,
   outdir,
-}: ExtractArgs): Promise<string> => {
+}: ExtractArgs): Promise<string> {
   debug("extracting", { outdir });
 
   const { [outputs.originalFilename]: fileContent } =
@@ -37,4 +37,4 @@ export const extractArchive = async ({
   const filePath = path.resolve(outdir, outputs.versionedFilename);
   await fs.writeFile(filePath, fileContent);
   return filePath;
-};
+}

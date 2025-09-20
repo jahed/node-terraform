@@ -1,17 +1,17 @@
-import path from "path";
-import { getDownloadFilename } from "./getDownloadFilename";
-import { readFile } from "fs/promises";
-import { DownloadArgs } from "./types";
-import { download } from "./download";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import * as openpgp from "openpgp";
+import { download } from "./download";
+import { getDownloadFilename } from "./getDownloadFilename";
+import type { DownloadArgs } from "./types";
 
-const getHashesUrl = ({ version }: DownloadArgs) => {
+function getHashesUrl({ version }: DownloadArgs) {
   return `https://releases.hashicorp.com/terraform/${version}/terraform_${version}_SHA256SUMS`;
-};
+}
 
-const getExpectedHash = async (args: DownloadArgs) => {
+export async function getExpectedHash(args: DownloadArgs) {
   const hashUrl = getHashesUrl(args);
-  const hashes = await download({ url: hashUrl });
+  const hashes = await download(hashUrl);
 
   const publicKey = await openpgp.readKey({
     armoredKey: await readFile(
@@ -21,7 +21,7 @@ const getExpectedHash = async (args: DownloadArgs) => {
   });
 
   const signature = await openpgp.readSignature({
-    binarySignature: await download({ url: `${hashUrl}.sig` }),
+    binarySignature: await download(`${hashUrl}.sig`),
   });
 
   const {
@@ -46,6 +46,4 @@ const getExpectedHash = async (args: DownloadArgs) => {
     }
   }
   throw new Error(`expected hash not found for file (${filename})`);
-};
-
-export { getExpectedHash };
+}

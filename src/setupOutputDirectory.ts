@@ -1,14 +1,11 @@
-import { relay, waterfall } from "@jahed/promises";
-import path from "path";
+import path from "node:path";
 import { makeDirectory } from "./makeDirectory";
 import { removeDirectory } from "./removeDirectory";
+import type { Outputs } from "./types";
 
-const setupOutputDirectory = waterfall(
-  (outputs) => path.dirname(outputs.path),
-  relay(
-    (outdir) => removeDirectory(outdir),
-    (outdir) => makeDirectory(outdir),
-  ),
-);
-
-export { setupOutputDirectory };
+export async function setupOutputDirectory(outputs: Outputs): Promise<string> {
+  const outdir = path.dirname(outputs.path);
+  await removeDirectory(outdir);
+  await makeDirectory(outdir);
+  return outdir;
+}

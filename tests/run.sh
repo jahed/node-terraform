@@ -17,7 +17,7 @@ function run_tests {
   pushd "${project_dir}"
 
   echo
-  echo "[${1}] TEST: Executes existing Terraform"
+  echo "[${1}] TEST: Installs and executes Terraform"
   x_install
   local result=$(get_version_line)
   if [[ "${result}" != "Terraform v${expected_version}" ]]; then

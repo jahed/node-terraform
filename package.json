@@ -44,7 +44,6 @@
     "test": "./tests/run.sh"
   },
   "dependencies": {
-    "@jahed/promises": "^1.0.2",
     "fflate": "^0.8.2",
     "find-cache-directory": "^6.0.0",
     "openpgp": "^6.0.0"

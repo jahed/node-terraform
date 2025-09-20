@@ -1,9 +1,7 @@
-import fs from "fs";
+import fs from "node:fs/promises";
 import { debug } from "./debug";
 
-const makeDirectory = (directory: string) => {
+export async function makeDirectory(directory: string): Promise<void> {
   debug("making directory", { directory });
-  return fs.promises.mkdir(directory, { recursive: true });
-};
-
-export { makeDirectory };
+  await fs.mkdir(directory, { recursive: true });
+}

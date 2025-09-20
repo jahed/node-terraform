@@ -1,9 +1,7 @@
+import fs from "node:fs/promises";
 import { debug } from "./debug";
-import { rm } from "fs/promises";
 
-const removeDirectory = (directory: string): Promise<void> => {
+export async function removeDirectory(directory: string): Promise<void> {
   debug("removing directory", { directory });
-  return rm(directory, { recursive: true, force: true });
-};
-
-export { removeDirectory };
+  await fs.rm(directory, { recursive: true, force: true });
+}

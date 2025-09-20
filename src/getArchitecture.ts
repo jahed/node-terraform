@@ -1,4 +1,4 @@
-export async function getArchitecture(): Promise<string> {
+export function getArchitecture(): string {
   switch (process.arch) {
     case "x64":
       return "amd64";

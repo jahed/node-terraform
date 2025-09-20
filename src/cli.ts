@@ -1,8 +1,8 @@
-import { spawn } from "child_process";
+import { spawn } from "node:child_process";
 import { getOutputs } from "./getOutputs";
 import { install } from "./install";
 
-const cli = async () => {
+async function cli() {
   const args = process.argv.slice(2);
   const outputs = getOutputs();
 
@@ -13,7 +13,7 @@ const cli = async () => {
   });
 
   terraform.on("close", (code) => process.exit(code || undefined));
-};
+}
 
 cli().catch((error) => {
   console.error(error);

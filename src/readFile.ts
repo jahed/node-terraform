@@ -1,20 +1,13 @@
-import { eventually } from "@jahed/promises";
-import fs from "fs";
+import fs from "node:fs/promises";
 import { debug } from "./debug";
 
-const readFile = (file: string): Promise<Buffer> => {
-  return eventually((resolve, reject) => {
-    fs.readFile(file, (err, buffer) => {
-      if (err) {
-        debug("failed to read file", { file });
-        reject(err);
-        return;
-      }
-
-      debug("read file", { file });
-      resolve(buffer);
-    });
-  });
-};
-
-export { readFile };
+export async function readFile(file: string): Promise<Buffer> {
+  try {
+    const buffer = await fs.readFile(file);
+    debug("read file", { file });
+    return buffer;
+  } catch (error) {
+    debug("failed to read file", { file });
+    throw error;
+  }
+}

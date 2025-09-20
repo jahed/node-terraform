@@ -1,22 +1,19 @@
-import { reason, resolveNullable } from "@jahed/promises";
-
-const getPlatform = () => {
-  return resolveNullable(
-    {
-      aix: null,
-      darwin: "darwin",
-      freebsd: "freebsd",
-      linux: "linux",
-      openbsd: "openbsd",
-      sunos: "solaris",
-      win32: "windows",
-      android: null,
-      cygwin: null,
-      netbsd: null,
-      haiku: null,
-    }[process.platform],
-    reason(`"${process.platform}" platform is not supported by terraform.`),
+export function getPlatform(): string {
+  switch (process.platform) {
+    case "darwin":
+      return "darwin";
+    case "freebsd":
+      return "freebsd";
+    case "linux":
+      return "linux";
+    case "openbsd":
+      return "openbsd";
+    case "sunos":
+      return "solaris";
+    case "win32":
+      return "windows";
+  }
+  throw new Error(
+    `"${process.platform}" platform is not supported by terraform.`,
   );
-};
-
-export { getPlatform };
+}

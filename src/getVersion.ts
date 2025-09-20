@@ -1,8 +1,5 @@
-import { resolved } from "@jahed/promises";
-import { Outputs } from "./types";
+import type { Outputs } from "./types";
 
-const getVersion = (outputs: Outputs) => {
-  return resolved(outputs.version);
-};
-
-export { getVersion };
+export function getVersion(outputs: Outputs): string {
+  return outputs.version;
+}

@@ -1,5 +1,3 @@
-import { debuglog } from "util";
+import { debuglog } from "node:util";
 
-const debug = debuglog("@jahed/terraform");
-
-export { debug };
+export const debug = debuglog("@jahed/terraform");
