@@ -21,7 +21,7 @@ export async function getExpectedHash(args: DownloadArgs) {
   });
 
   const signature = await openpgp.readSignature({
-    binarySignature: await download(`${hashUrl}.sig`),
+    binarySignature: await download(`${hashUrl}.72D7468F.sig`),
   });
 
   const {
