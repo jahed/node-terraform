@@ -22,8 +22,8 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - uses: actions/download-artifact@v8
         with:
-          artifact-ids: ${{ needs.build.outputs.artifact-id }}
-          path: ./artifacts/package.tgz
+          name: package.tgz
+          path: ./artifacts/
       - run: npm publish --provenance --access public ./artifacts/package.tgz
       - run: gh release create --verify-tag "v$(jq -r .version package.json)"
         env:

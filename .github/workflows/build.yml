@@ -7,14 +7,9 @@ on:
   pull_request:
     branches: master
   workflow_call:
-    outputs:
-      artifact-id:
-        value: ${{ jobs.build.outputs.artifact-id }}
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      artifact-id: ${{ steps.upload-artifact.outputs.artifact-id }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -24,7 +19,6 @@ jobs:
       - run: npm run lint
       - run: npm run build
       - uses: actions/upload-artifact@v7
-        id: upload-artifact
         with:
           path: ./artifacts/package.tgz
           archive: false
@@ -41,6 +35,6 @@ jobs:
           node-version: ${{ matrix.node }}
       - uses: actions/download-artifact@v8
         with:
-          artifact-ids: ${{ needs.build.outputs.artifact-id }}
-          path: ./artifacts/package.tgz
+          name: package.tgz
+          path: ./artifacts/
       - run: ./tests/run.sh
