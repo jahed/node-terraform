@@ -23,12 +23,11 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run build
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         id: upload-artifact
         with:
-          name: artifacts
-          path: ./artifacts/
-          if-no-files-found: error
+          path: ./artifacts/package.tgz
+          archive: false
   test:
     needs: [build]
     runs-on: ubuntu-latest
@@ -40,8 +39,8 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node }}
-      - uses: actions/download-artifact@v6
+      - uses: actions/download-artifact@v8
         with:
           artifact-ids: ${{ needs.build.outputs.artifact-id }}
-          path: ./artifacts/
+          path: ./artifacts/package.tgz
       - run: ./tests/run.sh
