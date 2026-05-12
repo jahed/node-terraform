@@ -43,5 +43,5 @@ jobs:
       - uses: actions/download-artifact@v6
         with:
           artifact-ids: ${{ needs.build.outputs.artifact-id }}
-          path: ./
+          path: ./artifacts/
       - run: ./tests/run.sh
