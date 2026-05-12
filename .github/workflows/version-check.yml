@@ -15,13 +15,12 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           ssh-key: ${{ secrets.SSH_KEY }}
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: "20"
-          cache: "npm"
+          node-version: "24"
       - run: npm ci
       - run: ./scripts/version-check.sh
         env:

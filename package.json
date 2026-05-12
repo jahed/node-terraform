@@ -28,12 +28,12 @@
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "20",
+      "version": "24",
       "onFail": "warn"
     },
     "packageManager": {
       "name": "npm",
-      "version": "10",
+      "version": "11",
       "onFail": "warn"
     }
   },
